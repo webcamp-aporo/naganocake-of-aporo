@@ -2,18 +2,20 @@
 <table>
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
 		</tr>
 	</thead>
-	<tbody>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</tbody>
+	<% @customers.each do |customer| %>
+		<tbody>
+			<tr>
+				<th><%= customer.id %></th>
+				<th><%= customer.name %></th>
+				<th><%= customer.email %></th>
+				<th>ステータス</th>
+			</tr>
+		</tbody>
+	<% end %>
 </table>
