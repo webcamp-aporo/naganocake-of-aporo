@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>ジャンル一覧・追加</h3>
+      <br>
+      <!--⭐ジャンル追加⭐︎-->
+      <%= form_for(@item_genre, url: admins_item_genres_path) do |f| %>
+        <!--エラー文-->
+        <% if @item_genre.errors.any? %>
+          <div class="alert alert-warning">
+            <ul>
+              <% @item_genre.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <!--ジャンル名-->
+        <%= f.label :name, "ジャンル" %>
+        <%= f.text_field :name, autofocus: true %>
+        <!--有効無効-->
+        <%= f.radio_button :is_delete, :true %>
+        <%= f.label :is_delete, "有効", value: :true, style: "display: inline-block;" %>
+        <%= f.radio_button :is_delete, :false %>
+        <%= f.label :is_delete, "無効", value: :false, style: "display: inline-block;" %>
+        <!--追加ボタン-->
+        <%= f.submit "追加", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <br>
+
+<!--⭐ジャンル一覧⭐︎-->
+  <div class="row">
+    <div class="col-xs-9">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>ジャンル</th>
+            <th>状態</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @item_genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td><%= genre.name %></td>
+            <td><%= genre.is_delete ? '有効' : '無効' %></td>
+            <td><%= link_to '編集する', admins_item_genres_path(genre.id), class: "btn btn-primary" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
