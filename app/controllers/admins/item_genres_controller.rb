@@ -6,7 +6,7 @@ class Admins::ItemGenresController < ApplicationController
   
   def create
     @item_genre = ItemGenre.new(item_genre_params)
-    if @item_genre.save!
+    if @item_genre.save
       # binding.pry
       redirect_to admins_item_genres_path, notice: 'ジャンルを登録しました'
     else
