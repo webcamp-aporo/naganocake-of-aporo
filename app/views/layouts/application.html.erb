@@ -11,6 +11,41 @@
 
   <body>
 
-    <%= yield %>
+    <!--ヘッダーの記述-->
+    <header class="navbar navbar-fixed-top navbar-inverse" style="background:#E95464;">
+      <div class="container-fluid">
+
+        <!-- ヘッダー左 -->
+        <nav class="bar-left">
+          <%= link_to 'NaganoCake' %>
+        </nav>
+
+
+        <!-- ヘッダー中 -->
+        <nav class="bar-center">
+          <p>ようこそ、xxxさん</p>
+        </nav>
+
+
+        <!-- ヘッダー右 -->
+        <!-- CTM:マイページ商品一覧カート新規登録ログインログアウト ADM: 商品一覧会員一覧注文履歴一覧ジャンル一覧ログインログアウト検索 -->
+
+        <nav class="bar-right">
+          <ul style="margin:0; padding: 0">
+            <li><%= link_to 'マイページ' %></li>
+            <li><%= link_to '商品一覧' %></li>
+            <li><%= link_to 'カート' %></li>
+            <li><%= link_to '新規登録' %></li>
+            <li><%= link_to 'ログイン' %></li>
+            <li><%= link_to 'ログアウト' %></li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+
+    <div class="container-fluid" style="margin:20px 15px 0px 15px;">
+      <%= yield %>
+    </div>
   </body>
 </html>
