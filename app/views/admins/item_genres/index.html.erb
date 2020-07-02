@@ -19,10 +19,10 @@
         <%= f.label :name, "ジャンル" %>
         <%= f.text_field :name, autofocus: true %>
         <!--有効無効-->
-        <%= f.radio_button :is_delete, :true %>
-        <%= f.label :is_delete, "有効", value: :true, style: "display: inline-block;" %>
         <%= f.radio_button :is_delete, :false %>
-        <%= f.label :is_delete, "無効", value: :false, style: "display: inline-block;" %>
+        <%= f.label :is_delete, "有効", value: :false, style: "display: inline-block;" %>
+        <%= f.radio_button :is_delete, :true %>
+        <%= f.label :is_delete, "無効", value: :true, style: "display: inline-block;" %>
         <!--追加ボタン-->
         <%= f.submit "追加", class: "btn btn-primary" %>
       <% end %>
@@ -46,8 +46,8 @@
         <tbody>
           <tr>
             <td><%= genre.name %></td>
-            <td><%= genre.is_delete ? '有効' : '無効' %></td>
-            <td><%= link_to '編集する', admins_item_genres_path(genre.id), class: "btn btn-primary" %></td>
+            <td><%= genre.is_delete ? '無効' : '有効' %></td>
+            <td><%= link_to '編集する', edit_admins_item_genre_path(genre.id), class: "btn btn-primary" %></td>
           </tr>
         </tbody>
         <% end %>

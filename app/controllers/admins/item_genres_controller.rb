@@ -21,7 +21,7 @@ class Admins::ItemGenresController < ApplicationController
 
   def update
     @item_genre = ItemGenre.find(params[:id])
-    if @item_genre.update
+    if @item_genre.update(item_genre_params)
       redirect_to admins_item_genres_path, notice: 'ジャンルを編集しました'
     else
       render :edit
