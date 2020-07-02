@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>ジャンル編集</h3>
+      <!--⭐ジャンル編集⭐︎-->
+      <%= form_for(@item_genre, url: admins_item_genres_path) do |f| %>
+        <!--エラー文-->
+        <% if @item_genre.errors.any? %>
+          <div class="alert alert-warning">
+            <ul>
+              <% @item_genre.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <!--ジャンル名-->
+        <%= f.label :name, "ジャンル" %>
+        <%= f.text_field :name, autofocus: true %>
+        <!--有効無効-->
+        <%= f.radio_button :is_delete, :true %>
+        <%= f.label :is_delete, "有効", value: :true, style: "display: inline-block;" %>
+        <%= f.radio_button :is_delete, :false %>
+        <%= f.label :is_delete, "無効", value: :false, style: "display: inline-block;" %>
+        <!--追加ボタン-->
+        <%= f.submit "変更を保存する", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
+</div>
