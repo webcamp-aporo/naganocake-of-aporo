@@ -12,7 +12,7 @@
 		<tbody>
 			<tr>
 				<th><%= customer.id %></th>
-				<th><%= link_to customer.name, admins_customer_path %></th>
+				<th><%= link_to customer.last_name, admins_customer_path(customer) %></th>
 				<th><%= customer.email %></th>
 				<th>ステータス</th>
 			</tr>
