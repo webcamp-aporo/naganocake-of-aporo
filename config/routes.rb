@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
   devise_for :customers
   devise_for :admins
   namespace :admins do
