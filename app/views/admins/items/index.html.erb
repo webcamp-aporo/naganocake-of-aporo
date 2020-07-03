@@ -1,2 +1,40 @@
-<h1>Admins::Items#index</h1>
-<p>Find me in app/views/admins/items/index.html.erb</p>
+<!--⭐︎訂正項目⭐︎-->
+<!--レイアウト-->
+<!--kaminari?-->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>商品一覧</h3>
+      <h4 class="text-right"><%= link_to "＋", new_admins_item_path %></h4>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <% @items.each do |item| %>
+        <tbody>
+          <tr>
+            <!--ID-->
+            <td><%= item.id %></td>
+            <!--商品名-->
+            <td><%= link_to item.name, admins_item_path(item) %></td>
+            <!--価格-->
+            <td><%= item.price %></td>
+            <!--ジャンル-->
+            <td><%= item.item_genre.name %></td>
+            <!--ステータス-->
+            <td><%= item.is_active ? "販売中" : "販売停止中" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
