@@ -18,8 +18,8 @@ class Admins::CustomersController < ApplicationController
   end
 
   	# ストロングパラメーターは未定
-  	# private
-  	# def customer_params
-  	# 	params.require(:customer).permit()
-  	# end
+  	private
+  	def customer_params
+  		params.require(:customer).permit()
+  	end
 end
