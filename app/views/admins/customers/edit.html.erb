@@ -22,7 +22,12 @@
 	<%= f.label :メールアドレス %>
 	<%= f.text_field :email %></br>
 
-	会員ステータス</br>
+	<%= f.label :会員ステータス%>
+	<%= f.radio_button :is_delete, :true %>
+	<%= f.label :is_delete, "有効", {value: :true} %>
+
+	<%= f.radio_button :is_delete, :false %>
+	<%= f.label :is_delete, "退会済み", {value: :false} %></br>
 
 	<%= f.submit "変更を保存する", class: "btn btn-primary" %>
 <% end %>

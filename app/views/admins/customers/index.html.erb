@@ -14,7 +14,7 @@
 				<th><%= customer.id %></th>
 				<th><%= link_to customer.last_name+customer.first_name, admins_customer_path(customer) %></th>
 				<th><%= customer.email %></th>
-				<th>ステータス</th>
+				<th><%= customer.is_delete %></th>
 			</tr>
 		</tbody>
 	<% end %>
