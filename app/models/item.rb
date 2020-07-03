@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :item_genre_id, presence: true
   validates :price, presence: true
-  validates :is_active, presence: true
+  validates :is_active, inclusion: { in: [true, false] }
 end
