@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :customers
+  resources :customers, only: [:show, :edit, :update, :exit, :destroy] do
+    resources :shipping_addresses, only:[:index, :edit, :update, :destroy]
+  end
+
 end
