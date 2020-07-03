@@ -1,7 +1,7 @@
 <h1><%= @customer.last_name + @customer.first_name %>の会員情報編集</h1>
 
 会員ID: <%= @customer.id %>
-<%= form_with model: @customer, local: true do |f| %>
+<%= form_with model: [:admins,@customer], local: true do |f| %>
 	<%= f.label :氏名%>
 	<%= f.text_field :last_name %>
 	<%= f.text_field :first_name %></br>
@@ -12,10 +12,10 @@
 
 	<%= f.label :郵便番号 %>
 	<%= f.text_field :postal_number %></br>
-	
+
 	<%= f.label :住所 %>
 	<%= f.text_field :address %></br>
-	
+
 	<%= f.label :電話番号 %>
 	<%= f.text_field :phone_number %></br>
 
