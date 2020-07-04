@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :admins
   namespace :admins do
+  	root 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :item_genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
