@@ -1,26 +1,28 @@
 class Customers::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: "登録情報を編集しました"
+      redirect_to customer_path(current_customer.id), notice: "登録情報を編集しました"
     else
       render :edit
     end
   end
 
   def exit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def destroy
+    @customer = current_customer
+    redirect_to items_path, notice: "退会しました"
   end
 
   private
