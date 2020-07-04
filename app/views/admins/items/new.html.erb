@@ -36,7 +36,7 @@
         <%= f.text_field :price %><br>
         <!--販売ステータス-->
         <%= f.label :is_active, "販売ステータス" %>
-        <%= f.select :is_active, [['販売中', 'true'], ['販売停止', 'false']], include_blank: '--選択してください--' %><br>
+        <%= f.select :is_active, [['販売中', 'true'], ['販売停止', 'false']], { include_blank: '選択してください' } %><br>
         <!--追加ボタン-->
         <%= f.submit "新規登録", class: "btn btn-primary"%>
       <% end %>
