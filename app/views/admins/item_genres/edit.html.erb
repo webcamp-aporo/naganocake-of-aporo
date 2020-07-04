@@ -1,3 +1,7 @@
+<!--⭐︎訂正項目⭐︎-->
+<!--有効無効-->
+
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -19,9 +23,9 @@
         <%= f.text_field :name, autofocus: true %>
         <!--有効無効-->
         <%= f.radio_button :is_delete, :false %>
-        <%= f.label :is_delete, "有効", value: :false, style: "display: inline-block;" %>
+        <%= f.label :is_delete, "有効", style: "display: inline-block;" %>
         <%= f.radio_button :is_delete, :true %>
-        <%= f.label :is_delete, "無効", value: :true, style: "display: inline-block;" %>
+        <%= f.label :is_delete, "無効", style: "display: inline-block;" %>
         <!--追加ボタン-->
         <%= f.submit "変更を保存する", class: "btn btn-primary"%>
       <% end %>

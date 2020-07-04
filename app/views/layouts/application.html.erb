@@ -41,6 +41,17 @@
           </ul>
         </nav>
 
+<!------------------※一時的に表示（admin）------------------>
+        <nav class="bar-right">
+          <ul style="margin:0; padding: 0">
+            <li><%= link_to '商品一覧', admins_items_path %></li>
+            <li><%= link_to '会員一覧', admins_customers_path %></li>
+            <li><%= link_to '注文履歴一覧' %></li>
+            <li><%= link_to 'ジャンル一覧', admins_item_genres_path %></li>
+            <li><%= link_to 'ログアウト' %></li>
+          </ul>
+        </nav>
+
       </div>
     </header>
 

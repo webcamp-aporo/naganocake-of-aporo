@@ -11,10 +11,14 @@
 	<% @customers.each do |customer| %>
 		<tbody>
 			<tr>
+				<!-- 会員ID -->
 				<th><%= customer.id %></th>
-				<th><%= link_to customer.last_name, admins_customer_path(customer) %></th>
+				<!-- 氏名 -->
+				<th><%= link_to customer.last_name+customer.first_name, admins_customer_path(customer) %></th>
+				<!-- メールアドレス -->
 				<th><%= customer.email %></th>
-				<th>ステータス</th>
+				<!-- 会員ステータス -->
+				<th><%= customer.is_delete %></th>
 			</tr>
 		</tbody>
 	<% end %>
