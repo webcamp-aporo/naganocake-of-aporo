@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'homes/top'
-  end
   devise_for :customers
   devise_for :admins
   namespace :admins do
