@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-  	root 'homes#top'
+    root 'homes#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :item_genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
