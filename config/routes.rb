@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'customers/homes#top'
+  get 'cart_items/index'
+  post 'cart_items/index'
   devise_for :customers
   devise_for :admins
 
