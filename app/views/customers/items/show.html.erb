@@ -31,12 +31,13 @@
 	<main class="col-lg-10" style="background-color: #fffafa">
 		<div class="row">
 			<div class="col">
-				<img src="/assets/スマイル-1093x729.png" style="width: 100%; background-color: #00ff00;">
+				<%= attachment_image_tag item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
+				<!-- widthって使える？ -->
 			</div>
 			<div class="col">
-				<p>いちごのショートケーキ</p>
-				<p>商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文です商品の説明文</p>
-				<p>¥ 550（税込）</p>
+				<p><%= @item.name %></p>
+				<p><%= @item.description %></p>
+				<p>¥<%= @item.price %>（税込）</p>
 
 				<div class="btn-group">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
