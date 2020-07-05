@@ -1,13 +1,13 @@
-マイページだよ。リンクは飛べたり飛べなかったりするよ。ビジュアルも整えないとね。完成までもうちょっと待っててね。
+マイページだよ。リンクは飛べたり飛べなかったり。ビジュアルも整えないとね。完成までもうちょっと待っててね。
 <h2>マイページ</h2>
 <table>
   <thead>
   	<tr>
   	  <td>登録情報</td>
   	  <td>
-  	  	<%= link_to "編集する", edit_customer_path %>
+  	  	<%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
   	  </td>
-  	  <td><%= link_to 'パスワードを変更する' %></td>
+  	  <td><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary" %></td>
   	</tr>
   </thead>
   <tbody>
@@ -45,11 +45,11 @@
   <tfoot>
   	<tr>
   	  <td>発送先</td>
-  	  <td><%= link_to "一覧を見る" %></td>
+  	  <td><%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary" %></td>
   	</tr>
   	<tr>
   	  <td>注文履歴</td>
-  	  <td><%= link_to '一覧を見る' %></td>
+  	  <td><%= link_to '一覧を見る', "#", class: "btn btn-primary" %></td>
   	</tr>
   </tfoot>
 </table>

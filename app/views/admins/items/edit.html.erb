@@ -1,45 +1,71 @@
 <!--⭐︎訂正項目⭐︎-->
-<!--画像表示-->
-<!--レイアウト-->
+<!--ジャンルと販売ステータスのformの幅が気になる、、-->
 
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>商品編集</h3>
-      <!--⭐商品新規登録⭐︎-->
-      <%= form_for(@item, url:admins_item_path(@item.id)) do |f| %>
-        <!--エラー文-->
-        <% if @item.errors.any? %>
-          <div class="alert alert-warning">
-            <ul>
-              <% @item.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <!--画像-->
-        <%= attachment_image_tag @item, :image, :fill, 60, 60 %>
-        <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form" %><br>
+  <h3 class="col-lg-4 text-center">商品編集</h3><br><br><br><br>
+
+<!--==========⭐商品編集⭐︎==========-->
+  
+  <%= form_for(@item, url:admins_item_path(@item.id)) do |f| %>
+
+    <!--エラー文-->
+    <% if @item.errors.any? %>
+      <div class="alert alert-warning">
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+
+      <!--画像-->
+      <div class="col-lg-4 text-center">
+        <%= attachment_image_tag @item, :image, format: 'jpeg', size: "300x200", fallback: "no_image.jpg" %><br><br>
+        <%= f.attachment_field :image, class: "user-edit-form" %><br>
+      </div>
+
+      <div class="col-lg-8">
+
         <!--商品名-->
-        <%= f.label :name, "商品名" %>
-        <%= f.text_field :name %><br>
+        <div class="form-group">
+          <%= f.label :name, "商品名", class: "col-lg-2 align-top" %>
+          <%= f.text_field :name, class: "col-lg-4" %><br>
+        </div>
+
         <!--説明-->
-        <%= f.label :description, "商品説明" %>
-        <%= f.text_area :description %><br>
+        <div class="form-group">
+          <%= f.label :description, "商品説明", class: "col-lg-2 align-top" %>
+          <%= f.text_area :description, rows: 5, class: "col-lg-4" %><br>
+        </div>
+
         <!--ジャンル-->
-        <%= f.label :item_genre_id, "ジャンル" %>
-        <%= f.select :item_genre_id, ItemGenre.all.map{|o| [o.name, o.id]} %><br>
+        <div class="form-group">
+          <%= f.label :item_genre_id, "ジャンル", class: "col-lg-2 align-top" %>
+          <%= f.select :item_genre_id, ItemGenre.all.map{|o| [o.name, o.id]}, class: "col-lg-4" %><br>
+        </div>
+
         <!--税抜価格-->
-        <%= f.label :price, "税抜価格" %>
-        <%= f.text_field :price %><br>
+        <div class="form-group">
+          <%= f.label :price, "税抜価格", class: "col-lg-2 align-top" %>
+          <%= f.text_field :price, class: "col-lg-4" %>円<br>
+        </div>
+
         <!--販売ステータス-->
-        <%= f.label :is_active, "販売ステータス" %>
-        <%= f.select :is_active, [['販売中', 'true'], ['販売停止中', 'false']] %><br>
-        <!--追加ボタン-->
-        <%= f.submit "変更を保存", class: "btn btn-primary"%>
-      <% end %>
+        <div class="form-group">
+          <%= f.label :is_active, "販売ステータス", class: "col-lg-2 align-top" %>
+          <%= f.select :is_active, [['販売中', 'true'], ['販売停止中', 'false']], class: "col-lg-4" %><br>
+        </div>
+
+        <!--変更ボタン-->
+        <div class="text-right">
+          <%= f.submit "変更を保存", class: "btn btn-primary"%>
+        </div>
+
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

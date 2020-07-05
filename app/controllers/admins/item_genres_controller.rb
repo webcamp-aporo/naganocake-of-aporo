@@ -30,6 +30,6 @@ class Admins::ItemGenresController < ApplicationController
 
   private
     def item_genre_params
-      params.require(:item_genre).permit(:name,:id_delete)
+      params.require(:item_genre).permit(:name,:is_delete)
     end
 end
