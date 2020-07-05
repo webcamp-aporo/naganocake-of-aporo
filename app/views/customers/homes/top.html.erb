@@ -8,35 +8,46 @@
 						<th>ジャンル名</th>
 					</tr>
 				</thead>
-				 <%# @genres.each do |genre| %>
+
+				 <% @genres.each do |genre| %>
 				<tbody>
-					<!-- <tr>
-						<td><%#= link_to genre.name %></td>
-					</tr> -->
 					<tr>
-						<td>ケーキ</td>
+						<td><%= link_to genre.name %></td>
 					</tr>
-					<tr>
-						<td>焼き菓子</td>
-					</tr>
-					<tr>
-						<td>プリン</td>
-					</tr>
-					<tr>
-						<td>キャンディ</td>
-					</tr>
+
 				</tbody>
+				<% end %>
 			</table>
 		</div>
 
 		<div class="col-md-9">
+			<!-- このmain-visualにassets/imagesの中のimages1.jpgを入れたい -->
 			<div class="main-visual">
 				<div class="main-visual-text">
 					ログインすると全ての機能が使用できます。
 				</div>
 			</div>
+
+<!-- 画像表示がまだpaginationもまだ -->
 			<h4>オススメ商品</h4>
-			
+			<div class="flex">
+				<div>
+					<% @items.each do |item| %>
+						<table>
+							<tr>
+								<td><%= item.image %></td>
+							</tr>
+							<tr>
+								<td><%= item.name %></td>
+							</tr>
+							<tr>
+								<td>¥<%= item.price %></td>
+							</tr>
+						</table>
+					<% end %>
+				</div>
+				<%= paginate @items %>
+			</div>
 		</div>
 	</div>
 </div>
