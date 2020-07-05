@@ -4,7 +4,8 @@ class Customers::ItemsController < ApplicationController
 	end
 
 	def show
-	    @item = Item.find(params[:id])
+			@item = Item.find(params[:id])
+			@cart_item = current_customer.cart_items.build
 	end
 
   private
