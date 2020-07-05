@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :items
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
+  resources :cart_items, only:[:index, :create, :update, :destroy]
+  delete 'cart_items/all_destroy'
 
   namespace :admins do
     root 'homes#top'
