@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   root 'customers/homes#top'
-  get 'cart_items/index'
-  post 'cart_items/index'
   devise_for :customers
   devise_for :admins
 
@@ -12,6 +10,8 @@ Rails.application.routes.draw do
     resources :items
     resources :shipping_addresses, only:[:index, :edit, :update, :destroy]
   end
+  resources :cart_items, only:[:index, :create, :update, :destroy]
+  delete 'cart_items/all_destroy'
 
   namespace :admins do
     root 'homes#top'
