@@ -22,7 +22,7 @@
       ジャンル　　<%= @item.item_genre.name %><br><br>
 
       <!--価格-->
-      税込価格（税抜価格）　　<%= @item.price %>（<%= @tax.to_i %>） 円<br><br>
+      税込価格（税抜価格）　　<%= @tax.to_i.to_s(:delimited) %>（<%= @item.price.to_s(:delimited) %>） 円<br><br>
 
       <!--ステータス-->
       販売ステータス　　<%= @item.is_active ? "販売中" : "販売停止中" %><br><br>
