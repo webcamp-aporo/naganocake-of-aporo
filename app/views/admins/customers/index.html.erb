@@ -18,7 +18,7 @@
 				<!-- メールアドレス -->
 				<th><%= customer.email %></th>
 				<!-- 会員ステータス -->
-				<th><%= customer.is_delete ? '有効' : '退会済' %></th>
+				<th><%= customer.deleted_at ? '退会済' : '有効' %></th>
 			</tr>
 		</tbody>
 	<% end %>
