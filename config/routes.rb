@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resource :customer, only: [:show, :edit, :update, :destroy]
     get 'exit' => 'customers#exit'
     resources :items
-    resources :shipping_addresses, only:[:index, :edit, :update, :destroy]
+    resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   resources :cart_items, only:[:index, :create, :update, :destroy]
   delete 'cart_items/all_destroy'
