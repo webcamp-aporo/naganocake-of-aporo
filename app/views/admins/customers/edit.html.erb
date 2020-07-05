@@ -45,11 +45,11 @@
 
 		<%= f.label :会員ステータス, class: "control-label col-sm-2"%>
 
-		<%= f.radio_button :is_delete, :true %>
-		<%= f.label :is_delete, "有効", style: "display: inline-block" %>
+		<%= f.radio_button :deleted_at, :nill %>
+		<%= f.label :deleted_at, "有効", style: "display: inline-block" %>
 
-		<%= f.radio_button :is_delete, :false %>
-		<%= f.label :is_delete, "退会済み", style: "display: inline-block"  %></br>
+		<%= f.radio_button :deleted_at, :true %>
+		<%= f.label :deleted_at, "退会済み", style: "display: inline-block"  %></br>
 
 		<%= f.submit "変更を保存する", class: "btn btn-primary col-sm-2" %>
 	</div>

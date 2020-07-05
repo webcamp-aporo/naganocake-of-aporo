@@ -22,7 +22,8 @@ class Customers::CustomersController < ApplicationController
 
   def destroy
     @customer = current_customer
-    redirect_to items_path, notice: "退会しました"
+    @customer.destroy
+    redirect_to root_path, notice: "退会しました"
   end
 
   private
