@@ -1,14 +1,6 @@
 <!--⭐︎訂正項目⭐︎-->
-<!--
-【確認して欲しい点】
-小計の記述方法
-合計金額の計算方法
-レイアウト
-
-【実装未確認】
-カートを空にする
-削除する
--->
+<!--レイアウト
+カートを空にする-->
 
 
 
@@ -43,7 +35,7 @@
                 <%= f.submit "変更", class: "btn btn-primary" %>
               <% end %>
             </td>
-            <td><%= cart.item.price * cart.count %></td>
+            <td><%= (cart.item.price * cart.count).to_s(:delimited) %></td>
             <td><%= link_to "削除する", cart_item_path(cart), class: "btn btn-danger", method: :delete %></td>
           </tr>
           <% end %>
@@ -53,7 +45,7 @@
         <table class="table table-bordered col-lg-3 float-right">
         <tr class="thead-light">
           <th>合計金額</th>
-          <td><%=  %></td>
+          <td><%= @totla_price.to_s(:delimited) %></td>
         </tr>
         </table>
 
