@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shipping_addresses, dependent: :destroy
+  has_many :cart_items
+
 
   validates :address, presence: true
   validates :last_name, presence: true
@@ -13,4 +15,6 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :postal_number, presence: true
   validates :phone_number, presence: true
+
+  acts_as_paranoid
 end

@@ -1,37 +1,22 @@
-<!-- 訳あってindexとshowを取り替えました -->
+<!--
+⭐︎訂正項目⭐︎
+・バリデーション（個数を選択しなかった場合）
+・同じものを別々にカートに入れた時、一緒の表示にさせたい（今はわかれちゃう）
+（ショートケーキ1個、ショートケーキ2個→ショートケーキ3個のようにしたい）
+-->
 
 <div class="container" style="margin-top:20px;">
 <div class="row">
 
 	<nav class="col-lg-2" style="background-color: #f0f8ff;">
-		<table>
-			<thead>
-				<tr>
-					<th>ジャンル検索</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>ケーキ</td>
-				</tr>
-				<tr>
-					<td>焼き菓子</td>
-				</tr>
-				<tr>
-					<td>プリン</td>
-				</tr>
-				<tr>
-					<td>キャンディ</td>
-				</tr>
-			</tbody>
-		</table>
+		<%= render 'customers/items/genres', genres: @genres %>		<!-- 商品表示をパーシャル化　-->
 	</nav>
 
 
 	<main class="col-lg-10" style="background-color: #fffafa">
 		<div class="row">
 			<div class="col">
-				<%= attachment_image_tag item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
+				<%= attachment_image_tag @item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
 				<!-- widthって使える？ -->
 			</div>
 			<div class="col">
@@ -40,18 +25,12 @@
 				<p>¥<%= @item.price %>（税込）</p>
 
 				<div class="btn-group">
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-					個数選択
-					<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li>1</li>
-						<li>1</li>
-						<li>1</li>
-					</ul>
+					<%= form_for(@cart_item) do |f| %>
+						<%= f.select :count, options_for_select((1..10).to_a) ,include_blank: "個数選択" %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <%= f.submit "カートに入れる", class: "btn btn-primary"%>
+					<% end %>
 				</div>
-
-				<div class="btn btn-primary">カートに入れる</div>
 			</div>
 		</div>
 	</main>
