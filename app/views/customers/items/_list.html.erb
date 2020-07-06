@@ -1,11 +1,13 @@
-<% items.each do |item| %>
-	<div class="col-lg-3">
-		<%= attachment_image_tag item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
-		<!-- widthって使える？ -->
-		
-		<ul style="list-style: none; margin:10px 0; padding: 0;">
-			<li><%= item.name%></li>
-			<li>¥<%= item.price %></li>
-		</ul>
-	</div>
-<% end %>
+<div class="row">
+	<% items.each do |item| %>
+		<div class="col-lg-3">
+			<%= attachment_image_tag item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
+			<!-- widthって使える？ -->
+			
+			<ul style="list-style: none; margin:10px 0; padding: 0;">
+				<li><%= item.name%></li>
+				<li>¥<%= item.price %></li>
+			</ul>
+		</div>
+	<% end %>
+</div>

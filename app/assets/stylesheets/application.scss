@@ -79,7 +79,28 @@ body{
   width: 100%;
   height: 300px;
   background-color: green;
+  background-image: url(image1.jpeg);
+  background-size: cover;
+  background-position: left center;
+
+  display: flex;                /* 位置を中央寄せにしています */
+  justify-content: center;
+  align-items: center;
+
   }
+
+.main-visual-text{
+  display: inline-block;
+  padding: 20px;
+  background-color: #ffffff;
+  opacity: 0.8;
+}
+
+.main-visual-text p{
+  font-weight: 500;
+  color: #000000;
+  line-height: 15px;
+}
 
   .flex {
   display: flex;
