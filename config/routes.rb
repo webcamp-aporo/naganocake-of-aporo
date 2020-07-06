@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     get 'exit' => 'customers#exit'
     resources :items
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-    # get "genres" => "items#genres", as :genres            #一時的に追加。最終的にはAjaxにしたい。
+    get "genres" => "items#genres", as: 'genres'            #一時的に追加。最終的にはAjaxにしたい。
   end
+  
   delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
   resources :cart_items, only:[:index, :create, :update, :destroy]
 
