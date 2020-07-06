@@ -15,7 +15,7 @@ end
 
 # ItemGenre.all.each do |genre|
 5.times do |n|
-	Items.create!(
+	Item.create!(
 		name: "ケーキ#{n + 1}",
 		description: "すごく美味しい。めっちゃ美味しい。",
 		price: 500,
@@ -45,3 +45,8 @@ ItemGenre.create!(
 	name: "キャンディー",
 	is_delete: false
 )
+
+Admin.create!(
+	email: "admins@example.com",
+	password: "password"
+	)
