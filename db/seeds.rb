@@ -14,34 +14,39 @@
 end
 
 # ItemGenre.all.each do |genre|
-# 5.times do |n|
-# 	genre.items.create!(
-# 		name: "ケーキ#{n + 1}",
-# 		description: "すごく美味しい。めっちゃ美味しい。",
-# 		price: 500,
-# 		image: File.open('app/assets/images/スマイル-1093x729.png'),
-# 		is_active: false,
-# 		item_genre_id: 1
-# 		)
+5.times do |n|
+	Item.create!(
+		name: "ケーキ#{n + 1}",
+		description: "すごく美味しい。めっちゃ美味しい。",
+		price: 500,
+		image: File.open('app/assets/images/スマイル-1093x729.png'),
+		is_active: false,
+		item_genre_id: 1
+		)
+end
 # end
-# end
 
-# ItemGenre.create!(
-# 	name: "ケーキ",
-# 	is_delete: false
-# )
+ItemGenre.create!(
+	name: "ケーキ",
+	is_delete: false
+)
 
-# ItemGenre.create!(
-# 	name: "焼き菓子",
-# 	is_delete: false
-# )
+ItemGenre.create!(
+	name: "焼き菓子",
+	is_delete: false
+)
 
-# ItemGenre.create!(
-# 	name: "プリン",
-# 	is_delete: false
-# )
+ItemGenre.create!(
+	name: "プリン",
+	is_delete: false
+)
 
-# ItemGenre.create!(
-# 	name: "キャンディー",
-# 	is_delete: false
-# )
+ItemGenre.create!(
+	name: "キャンディー",
+	is_delete: false
+)
+
+Admin.create!(
+	email: "admins@example.com",
+	password: "password"
+	)

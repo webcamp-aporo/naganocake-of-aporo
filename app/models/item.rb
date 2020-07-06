@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
-  belongs_to :item_genre
+	# デモデータを作成したいときは:itemgenreの後ろに　optinal: true　を記述
+	# ただしvalidationを受けていないデータなので実際のデータとしては使用せずあくまでデモデータとして使用
+  belongs_to :item_genre, optional: true
   has_many :cart_items
   attachment :image
 
