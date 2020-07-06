@@ -26,22 +26,22 @@ end
 # end
 # end
 
-# ItemGenre.create!(
-# 	name: "ケーキ",
-# 	is_delete: false
-# )
+ ItemGenre.create!(
+ 	name: "ケーキ",
+ 	is_delete: false
+ )
 
-# ItemGenre.create!(
-# 	name: "焼き菓子",
-# 	is_delete: false
-# )
+ ItemGenre.create!(
+ 	name: "焼き菓子",
+ 	is_delete: false
+ )
 
-# ItemGenre.create!(
-# 	name: "プリン",
-# 	is_delete: false
-# )
+ ItemGenre.create!(
+ 	name: "プリン",
+ 	is_delete: false
+ )
 
-# ItemGenre.create!(
-# 	name: "キャンディー",
-# 	is_delete: false
-# )
+ ItemGenre.create!(
+ 	name: "キャンディー",
+ 	is_delete: false
+ )

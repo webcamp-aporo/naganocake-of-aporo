@@ -5,19 +5,19 @@ class Customers::ItemsController < ApplicationController
 	end
 
 	def show
-			@item = Item.find(params[:id])
+		@item = Item.find(params[:id])
 	    @genres = ItemGenre.all
-			@cart_item = current_customer.cart_items.build
+		@cart_item = current_customer.cart_items.build
 	end
 
-	def genres
-		@items = Item.where(item_genre_id: params[:id])			#記述が正しいか不安。params不要かもしれん。
+	def genres										#最終的にはAjax化したい…
+		@items = Item.where(item_genre_id: params[:genres_id])
+	    @genre = ItemGenre.find(params[:genres_id])
 		@genres = ItemGenre.all
-  end
+	end
     
   private
     def item_params
       params.require(:item).permit(:image, :name, :description, :item_genre_id, :price, :is_active)
     end
-end
 end
