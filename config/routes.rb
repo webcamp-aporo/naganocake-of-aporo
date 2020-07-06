@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   root 'customers/homes#top'
+  get 'orders/new', to: 'customers/orders#new'
+  get 'orders/new/confirm', to: 'customers/orders#confirm_new'
+  post 'orders/new/confirm', to: 'customers/orders#create'
+  get 'orders/finish', to: 'customers/orders#finish'
+
   devise_for :customers
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
