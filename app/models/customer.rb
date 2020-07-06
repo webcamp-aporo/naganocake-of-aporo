@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :shipping_addresses, dependent: :destroy
   has_many :cart_items
+  has_many :orders
 
 
   validates :address, presence: true

@@ -12,7 +12,7 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def confirm_new
-		@orders = current_customer.orders.order_items
+		@orders = current_customer.order_items
 	end
 
 	def finish
