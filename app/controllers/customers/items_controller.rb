@@ -20,4 +20,4 @@ class Customers::ItemsController < ApplicationController
       params.require(:item).permit(:image, :name, :description, :item_genre_id, :price, :is_active)
     end
 end
-end
+

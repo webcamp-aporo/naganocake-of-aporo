@@ -1,6 +1,6 @@
-<!--==========⭐カスタマーログイン⭐==========-->
+<!--==========⭐管理者ログイン⭐==========-->
 <div class="container">
-  <h4 class="col-lg-6 text-center">会員の方はこちらからログイン</h4><br><br>
+  <h3 class="col-lg-6 text-center">管理者ログイン</h3><br><br>
 
   <div class="row">
     <div class="col-lg-12 text-center">
@@ -27,11 +27,6 @@
         </div>
       <% end %>
     </div>
-
-    <!--新規登録画面へ遷移-->
-    <h4 class="col-lg-6 text-center">登録がお済みでない方</h4>
-    <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。
   </div>
 </div>
-
-
+<%#= render "devise/shared/links" %>

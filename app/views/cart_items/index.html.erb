@@ -28,7 +28,7 @@
           <% @cart_items.each do |cart| %>
           <tr>
             <td><%= attachment_image_tag cart.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart.item.name %></td>
-            <td><%= cart.item.price %></td>
+            <td><%= cart.item.price.to_s(:delimited) %></td>
             <td>
               <%= form_for(cart, url:cart_item_path(cart)) do |f| %>
                 <%= f.text_field :count %>
