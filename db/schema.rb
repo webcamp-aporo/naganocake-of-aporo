@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_050432) do
     t.string "postal_number", null: false
     t.string "address", null: false
     t.string "name", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
