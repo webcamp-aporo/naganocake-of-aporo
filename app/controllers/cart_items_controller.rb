@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
   def index
     @cart_items = current_customer.cart_items
     # カートの合計金額
-    @totla_price = @cart_items.sum{|c| c.item.price * c.count }
+    @total_price = @cart_items.sum{|c| c.item.price * c.count }
   end
 
   def create

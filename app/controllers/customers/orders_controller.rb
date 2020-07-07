@@ -8,11 +8,12 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def new
-		
+		@order = current_customer.orders.new
 	end
 
 	def confirm_new
-		@order_items = current_customer.cart_items
+		@cart_items = current_customer.cart_items
+		@total_item_price = @cart_items.sum{|c| c.item.price * c.count }
 	end
 
 	def finish
