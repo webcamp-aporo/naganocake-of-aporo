@@ -1,6 +1,5 @@
 <!--
 ⭐︎訂正項目⭐︎
-・バリデーション（個数を選択しなかった場合）
 ・同じものを別々にカートに入れた時、一緒の表示にさせたい（今はわかれちゃう）
 （ショートケーキ1個、ショートケーキ2個→ショートケーキ3個のようにしたい）
 -->
@@ -23,9 +22,14 @@
 				<p><%= @item.description %></p>
 				<p>¥<%= @item.price %>（税込）</p>
 
+				<% if flash[:danger] %>
+					<div class="alert alert-danger col-lg-6">
+						<p><%= flash[:danger] %></p>
+					</div>
+				<% end %>
 				<div class="btn-group">
 					<%= form_for(@cart_item) do |f| %>
-						<%= f.select :count, options_for_select((1..10).to_a) ,include_blank: "個数選択" %>
+						<%= f.select :count, options_for_select((1..10).to_a) , include_blank: "個数選択", selected: 1 %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <%= f.submit "カートに入れる", class: "btn btn-primary"%>
 					<% end %>
