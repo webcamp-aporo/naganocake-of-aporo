@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<h3 class="">注文情報確認</h3>
+		<h3>注文情報確認</h3>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -11,7 +11,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @orders.each do |order| %>
+				<% @order_items.each do |order| %>
 					<tr>
 						<td><%= attachment_image_tag :order.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %><%= order_item.name %></td>
 						<td><%= order.price %></td>
@@ -21,5 +21,7 @@
 				<% end %>
 			</tbody>
 		</table>
+		支払い方法: <%= @order_items.orders.payment_methods %>
+		お届け先: <%= @order_items.order.address %>
 	</div>
 </div>
