@@ -17,10 +17,13 @@ Rails.application.routes.draw do
     resource :customer, only: [:show, :edit, :update, :destroy]
     get 'exit' => 'customers#exit'
     resources :items
-    resources :orders, only: [:index, :new] do
-      post :confirm, action: :confirm_new, on: :new
-      get 'finish', to: 'customers/orders#finish'
+    resources :orders, only: [:index, :new, :show] do
+      # 下の二行はURL'orders/new/confirm'でGETとPOSTリクエストを作ってます
+      get :confirm, on: :new
+      post :confirm,  on: :new
     end
+      get 'finish', to: 'orders#finish'
+
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
     get "genres" => "items#genres", as: 'genres'            #一時的に追加。最終的にはAjaxにしたい。
   end
