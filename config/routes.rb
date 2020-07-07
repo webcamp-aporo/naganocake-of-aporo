@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   root 'customers/homes#top'
+  # get 'orders/new', to: 'customers/orders#new'
+  # get 'orders/new/confirm', to: 'customers/orders#confirm_new'
+  # post 'orders/new/confirm', to: 'customers/orders#create'
+  # get 'orders/finish', to: 'customers/orders#finish'
+
   devise_for :customers
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -12,6 +17,10 @@ Rails.application.routes.draw do
     resource :customer, only: [:show, :edit, :update, :destroy]
     get 'exit' => 'customers#exit'
     resources :items
+    resources :orders, only: [:index, :new] do
+      post :confirm, action: :confirm_new, on: :new
+      get 'finish', to: 'customers/orders#finish'
+    end
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
     get "genres" => "items#genres", as: 'genres'            #一時的に追加。最終的にはAjaxにしたい。
   end

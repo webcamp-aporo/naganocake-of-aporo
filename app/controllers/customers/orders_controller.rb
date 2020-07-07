@@ -6,4 +6,17 @@ class Customers::OrdersController < ApplicationController
 	def show
 		
 	end
+
+	def new
+		@order = current_customer.orders.new
+	end
+
+	def confirm_new
+		@cart_items = current_customer.cart_items
+		@total_item_price = @cart_items.sum{|c| c.item.price * c.count }
+	end
+
+	def finish
+	end
+
 end
