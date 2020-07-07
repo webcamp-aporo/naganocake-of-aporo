@@ -14,16 +14,16 @@
 end
 
 # ItemGenre.all.each do |genre|
-5.times do |n|
-	Item.create!(
-		name: "ケーキ#{n + 1}",
-		description: "すごく美味しい。めっちゃ美味しい。",
-		price: 500,
-		image: File.open('app/assets/images/スマイル-1093x729.png'),
-		is_active: false,
-		item_genre_id: 1
-		)
-end
+# 5.times do |n|
+# 	Item.create!(
+# 		name: "ケーキ#{n + 1}",
+# 		description: "すごく美味しい。めっちゃ美味しい。",
+# 		price: 500,
+# 		image: File.open('app/assets/images/スマイル-1093x729.png'),
+# 		is_active: false,
+# 		item_genre_id: 1
+# 		)
+# end
 # end
 
 ItemGenre.create!(
