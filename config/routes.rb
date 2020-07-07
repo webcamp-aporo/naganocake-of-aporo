@@ -19,8 +19,9 @@ Rails.application.routes.draw do
     resources :items
     resources :orders, only: [:index, :new, :show] do
       # 下の二行はURL'orders/new/confirm'でGETとPOSTリクエストを作ってます
-      get :confirm, on: :new
-      post :confirm,  on: :new
+      # POSTの方は動作確認なし。POSTは普通に'/orders'でcreateアクション意送ってもいいかも
+      get :confirm, action: :confirm_new, on: :new
+      post :confirm, action: :create, on: :new
     end
       get 'finish', to: 'orders#finish'
 
