@@ -6,11 +6,25 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = current_customer.cart_items.build(cart_item_params)
-    if cart_item.save
-      redirect_to cart_items_path
+    #引数の条件に該当するデータがあればそれを返し(find_by)、そうでなければ新しくインスタンス(new)を作成
+    cart_item = current_customer.cart_items.find_or_initialize_by(item_id: cart_item_params[:item_id])
+    #⭐︎新規登録かどうか
+    if cart_item.new_record?
+      #⭐︎true
+      if cart_item.update_attributes(cart_item_params)
+        redirect_to cart_items_path
+      else
+        flash[:danger] = "個数を選択してください"
+        redirect_back(fallback_location: root_path)
+      end
     else
-      render "items/show"
+      #⭐︎false
+      item_count = cart_item.count + cart_item_params[:count].to_i
+      if cart_item.update_attributes(count: item_count)
+        redirect_to cart_items_path
+      else
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
