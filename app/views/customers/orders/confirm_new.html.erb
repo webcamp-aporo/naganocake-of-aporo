@@ -14,7 +14,7 @@
 				<% @cart_items.each do |cart_item| %>
 					<tr>
 						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %><%= cart_item.item.name %></td>
-						<td><%= (cart_item.item.price * 1.1).to_i.to_s(:delimited)  %></td>
+						<td><%= (cart_item.item.price * @Tax).to_i.to_s(:delimited)  %></td>
 						<td><%= cart_item.count %></td>
 						<td><%= ((cart_item.item.price * cart_item.count) * 1.1).to_i.to_s(:delimited) %></td>
 					</tr>
@@ -24,15 +24,15 @@
 		<table class="table table-bordered">
 			<tr class="thead-light">
 				<th>送料</th>
-				<td><%= 800.to_s(:delimited) %></td>
+				<td><%= @Fee.to_s(:delimited) %></td>
 			</tr>
 			<tr class="thead-light">
 				<th>商品合計</th>
-				<td><%= (@total_item_price * 1.1).to_i.to_s(:delimited) %></td>
+				<td><%= (@total_item_price * @Tax).to_i.to_s(:delimited) %></td>
 			</tr>
 			<tr class="thead-light">
 				<th>請求金額</th>
-				<td><%= (@total_item_price + 800).to_s(:delimited) %></td>
+				<td><%= (@total_item_price * @Tax + @Fee).to_i.to_s(:delimited) %></td>
 			</tr>
 
 		</table>

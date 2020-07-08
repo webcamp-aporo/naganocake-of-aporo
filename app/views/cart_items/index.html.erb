@@ -28,14 +28,14 @@
           <% @cart_items.each do |cart| %>
           <tr>
             <td><%= attachment_image_tag cart.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart.item.name %></td>
-            <td><%= (cart.item.price * 1.1).to_i.to_s(:delimited) %></td>
+            <td><%= (cart.item.price * @Tax).to_i.to_s(:delimited) %></td>
             <td>
               <%= form_for(cart, url:cart_item_path(cart)) do |f| %>
                 <%= f.text_field :count %>
                 <%= f.submit "変更", class: "btn btn-primary" %>
               <% end %>
             </td>
-            <td><%= ((cart.item.price * cart.count) * 1.1).to_i.to_s(:delimited) %></td>
+            <td><%= ((cart.item.price * cart.count) * @Tax).to_i.to_s(:delimited) %></td>
             <td><%= link_to "削除する", cart_item_path(cart), class: "btn btn-danger", method: :delete %></td>
           </tr>
           <% end %>
@@ -45,7 +45,7 @@
         <table class="table table-bordered col-lg-3 float-right">
         <tr class="thead-light">
           <th>合計金額</th>
-          <td><%= @total_price.to_s(:delimited) %></td>
+          <td><%= (@total_price * @Tax).to_i.to_s(:delimited) %></td>
         </tr>
         </table>
 
