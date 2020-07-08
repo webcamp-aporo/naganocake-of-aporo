@@ -15,8 +15,7 @@
 	<main class="col-lg-10" style="background-color: #fffafa">
 		<div class="row">
 			<div class="col">
-				<%= attachment_image_tag @item, :image, format: 'jpeg', size: "width:100%", fallback: "no_image.jpg" %>
-				<!-- widthって使える？ -->
+				<%= attachment_image_tag @item, :image, format: 'jpeg', size: "400x250", fallback: "no_image.jpg" %>
 			</div>
 			<div class="col">
 				<p><%= @item.name %></p>
