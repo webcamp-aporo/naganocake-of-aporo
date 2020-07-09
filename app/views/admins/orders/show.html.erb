@@ -1,0 +1,7 @@
+<h1>注文履歴詳細</h1>
+購入者: <%= link_to @order.customer.last_name + @order.customer.first_name %><br>
+配送先: 〒<%#=　@order.customer.shipping_addresses.postal_number + @order.customer.shipping_addresses.address + @order.customer.shipping_addresses.name %><br>
+支払い方法: <%= @order.payment_methods %>
+
+注文ステータス: <%= form_with model: @order, local: true, url: order_admins_order_path %>
+			<%= f.collection_select :order_status, @order_status %>

@@ -37,6 +37,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :item_genres, only: [:index, :create, :edit, :update]
     resources :items, except: [:destroy]
+    resources :orders, only: [:index, :show] do
+      post 'order', action: :update_order, on: :member
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
