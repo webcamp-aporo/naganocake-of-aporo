@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show] do
       patch 'order', action: :update_order, on: :member
     end
-    patch 'orders/:id/make', to: 'admims/order_items#update_make', as: :order_item
+    patch 'orders/:id/make', to: 'order_items#update_make', as: :order_item
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

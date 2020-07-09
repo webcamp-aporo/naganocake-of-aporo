@@ -5,7 +5,7 @@
 支払い方法: <%= @order.payment_methods %><br>
 
 注文ステータス: <%= form_with model: @order, local: true, url: order_admins_order_path do |f| %>
-				<%= f.select :order_status, Order.order_statuses.keys.to_a %>
+				<%= f.select :order_status, Order.order_statuses.keys %>
 				<%= f.submit '更新' %>
 			 <% end %><br>
 
@@ -20,15 +20,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @order_item.each do |order| %>
+		<% @order_items.each do |order_item| %>
 			<tr>
-				<td><%= order.item.name %></td>
-				<td><%= order.item.price.to_s(:delimited) %></td>
-				<td><%= order.count %></td>
-				<td><%= (order.item.price * order.count).to_s(:delimites) %></td>
+				<td><%= order_item.item.name %></td>
+				<td><%= order_item.item.price.to_i.to_s(:delimited) %></td>
+				<td><%= order_item.count %></td>
+				<td><%= (order_item.item.price * order_item.count).to_i.to_s(:delimited) %></td>
 				<td>
-					<%= form_with model: @order_item, local: true, url:admins_order_item_path do |f| %>
-						<%= f.select :make_status, OrderItem.make_statuses.to_a %>
+					<%= form_with model: order_item, local: true, url:admins_order_item_path(order_item) do |f| %>
+						<%= f.select :make_status, OrderItem.make_statuses.keys %>
 						<%= f.submit '更新' %>
 			 		<% end %><br>
 				</td>
