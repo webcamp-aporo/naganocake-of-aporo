@@ -32,12 +32,12 @@
 			</tr>
 			<tr class="thead-light">
 				<th>請求金額</th>
-				<td><%= (@total_item_price + 800).to_s(:delimited) %></td>
+				<td><%= session[:order]["payment"] %></td>
 			</tr>
-
 		</table>
 
-		<p>支払い方法: <%#= @order_items.orders.payment_methods %></p>
-		<p>お届け先: <%#= @order_items.order.address %></p>
+		<p>支払い方法: <%= "#{session[:order]["payment_methods"]}" %></p></br>
+		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p></br>
+	    <%= link_to "確定する", finish_path , class: "btn btn-primary" %>
 	</div>
 </div>
