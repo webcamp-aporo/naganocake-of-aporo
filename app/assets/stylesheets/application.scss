@@ -112,3 +112,37 @@ body{
   margin: 0 auto;
   background-color: #fff;
   }*/
+
+
+
+  // 検索フォーム
+  #form2{
+    position: relative;
+    margin-left: 240px;
+    max-width: 300px;	
+    margin-bottom: 40px;
+    padding-top: 0px
+    }
+
+    #sbox2{
+    height: 30px;
+    padding: 0 10px; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    border-radius: 1px;
+    outline: 0;
+    background: white;	
+    border: none;
+    }
+
+    #sbtn2{
+    height: 30px;
+    position: absolute; 
+    left: 150px;/*アイコン左右の位置調整*/
+    top: 0;
+    background: none;
+    color: #666;
+    border: none;
+    font-size: 20px;/*アイコンサイズ*/
+    }

@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
@@ -56,9 +57,13 @@
             <li><%= link_to '注文履歴一覧' %></li>
             <li><%= link_to 'ジャンル一覧', admins_item_genres_path %></li>
             <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete  %></li>
-          </ul>
-        </nav>
+          </ul><br>
 
+          <form id="form2" action="" method="get">
+          <input id="sbox2"  id="s" name="s" type="text" placeholder="Search">
+          <button type="submit" id="sbtn2"><i class="fa fa-search"></i></button>
+          </form>
+        </nav>
       </div>
     </header>
 
