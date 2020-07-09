@@ -1,5 +1,5 @@
 <h1>注文履歴詳細</h1>
-購入者: <%= link_to @order.customer.last_name + @order.customer.first_name %><br>
+購入者: <%= link_to @order.customer.last_name + @order.customer.first_name, admins_customer_path(@order.customer) %><br>
 配送先: 〒<%= @order.postal_number + @order.address + @order.name %><br>
 
 支払い方法: <%= @order.payment_methods %><br>
@@ -27,7 +27,10 @@
 				<td><%= order.count %></td>
 				<td><%= (order.item.price * order.count).to_s(:delimites) %></td>
 				<td>
-					<%= form_with model: @order_item, local: true, url: %>
+					<%= form_with model: @order_item, local: true, url:admins_order_item_path do |f| %>
+						<%= f.select :make_status, OrderItem.make_statuses.to_a %>
+						<%= f.submit '更新' %>
+			 		<% end %><br>
 				</td>
 			</tr>
 		<% end %>
