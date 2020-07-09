@@ -13,7 +13,7 @@
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
 					<tr>
-						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %><%= cart_item.item.name %></td>
+						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart_item.item.name %></td>
 						<td><%= (cart_item.item.price * @Tax).to_i.to_s(:delimited)  %></td>
 						<td><%= cart_item.count %></td>
 						<td><%= ((cart_item.item.price * cart_item.count) * 1.1).to_i.to_s(:delimited) %></td>
