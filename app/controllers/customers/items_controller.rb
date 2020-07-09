@@ -15,7 +15,7 @@ class Customers::ItemsController < ApplicationController
 	    @genre = ItemGenre.find(params[:genres_id])
 		@genres = ItemGenre.where(is_delete: false)
 	end
-    
+
   private
     def item_params
       params.require(:item).permit(:image, :name, :description, :item_genre_id, :price, :is_active)

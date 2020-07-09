@@ -54,7 +54,6 @@ class Customers::OrdersController < ApplicationController
 	def finish
 		order = Order.new(session[:order])
 		order.save
-
 		cart_items = current_customer.cart_items
 		cart_items.each do |cart_item|
 			order_item = OrderItem.new
