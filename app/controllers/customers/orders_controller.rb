@@ -1,10 +1,12 @@
 class Customers::OrdersController < ApplicationController
 	def index
-		
+		@orders = Order.where(customer_id: current_customer.id)
 	end
 
 	def show
-		
+		@order = Order.find(params[:id])
+		@order_item = @order.order_items
+		@total_item_price = @order_item.sum{|c| c.price * 1.1 * c.count }
 	end
 
 	def new
@@ -25,17 +27,17 @@ class Customers::OrdersController < ApplicationController
 		
 		if params[:order][:selected_address] == "my address"
 			session[:order][:postal_number] = current_customer.postal_number
-            session[:order][:address] = current_customer.address
-		    session[:order][:name] = current_customer.last_name + current_customer.first_name
+			session[:order][:address] = current_customer.address
+			session[:order][:name] = current_customer.last_name + current_customer.first_name
 		elsif params[:order][:selected_address] == "shipping_address"
-     		addresses = ShippingAddress.find(params[:order][:shipping])
+			addresses = ShippingAddress.find(params[:order][:shipping])
 			session[:order][:postal_number] = addresses.postal_number
-           	session[:order][:address] = addresses.address
+			session[:order][:address] = addresses.address
 			session[:order][:name] = addresses.name
 		elsif params[:order][:selected_address] == "new address"
 			session[:order][:postal_number] = params[:order][:postal_number]
-           	session[:order][:address] = params[:order][:address]
-		    session[:order][:name] = params[:order][:name]
+			session[:order][:address] = params[:order][:address]
+			session[:order][:name] = params[:order][:name]
 		end
 		
 		session[:order][:order_status] = 0
@@ -67,5 +69,9 @@ class Customers::OrdersController < ApplicationController
 	    cart_items.destroy_all
 	end
 
+  private
+    def orders
+      params.require(:order).permit(:customer_id, :shipping_fee, :payment, :payment_methods, :postal_number, :address, :name, :order_status)
+    end
 
 end
