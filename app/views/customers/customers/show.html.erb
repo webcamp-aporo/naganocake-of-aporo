@@ -5,13 +5,13 @@
   	</div>
 	</div>
   <div class="row">
-    <p><strong>登録情報</strong></p>
-    <div class="mypg">
-      <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
-    </div>
-    <div class="mypg">
-			<%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary" %>
-		</div>
+    <table>
+      <tr>
+        <th>登録情報</th>
+        <td>
+      	  <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
+        </td>
+        <td><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary" %></td>
       </tr>
     </table>
   </div>
@@ -49,7 +49,7 @@
       </tr>
     </table>
   </div>
-	<div class="row">
+  <div class="row">
     <table>
      	<tr>
  	      <th>発送先</th>
