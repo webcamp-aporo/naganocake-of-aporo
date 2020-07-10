@@ -15,7 +15,7 @@
 			<div class="col">
 				<p style="font-size:25px;"><%= @item.name %></p>
 				<p><%= @item.description %></p>
-				<p>¥<%= @item.price %>（税込）</p>
+				<p>¥<%= (@item.price * 1.1).to_i.to_s(:delimited) %>（税込）</p>
 
 				<% if flash[:danger] %>
 					<div class="alert alert-danger col-lg-6">

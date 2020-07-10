@@ -1,17 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-			<h1 class="title">注文履歴詳細</h1>
-			購入者: <%= link_to @order.customer.last_name + @order.customer.first_name, admins_customer_path(@order.customer) %><br>
-			配送先: 〒<%= @order.postal_number + @order.address + @order.name %><br>
+		<h1 class="title">注文履歴詳細</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<strong>購入者</strong> <%= link_to @order.customer.last_name + @order.customer.first_name, admins_customer_path(@order.customer) %><br>
+			<strong>配送先</strong> 〒<%= @order.postal_number + @order.address + @order.name %><br>
 
-			支払い方法: <%= @order.payment_methods %><br>
+			<strong>支払い方法</strong> <%= @order.payment_methods %><br>
 
-			注文ステータス: <%= form_with model: @order, local: true, url: order_admins_order_path do |f| %>
+			<strong>注文ステータス</strong> <%= form_with model: @order, local: true, url: order_admins_order_path do |f| %>
 							<%= f.select :order_status, Order.order_statuses.keys %>
 							<%= f.submit '更新' %>
 						<% end %><br>
+		</div>
+	</div>
 
+	<div class="row">
+		<div class="col-md-10">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
@@ -26,9 +32,9 @@
 					<% @order_items.each do |order_item| %>
 						<tr>
 							<td><%= order_item.item.name %></td>
-							<td><%= order_item.item.price.to_i.to_s(:delimited) %></td>
+							<td><%= (order_item.price).to_i.to_s(:delimited) %></td>
 							<td><%= order_item.count %></td>
-							<td><%= (order_item.item.price * order_item.count).to_i.to_s(:delimited) %></td>
+							<td><%= (order_item.price * order_item.count).to_i.to_s(:delimited) %></td>
 							<td>
 								<%= form_with model: order_item, local: true, url:admins_order_item_path(order_item) do |f| %>
 									<%= f.select :make_status, OrderItem.make_statuses.keys %>
@@ -39,6 +45,12 @@
 					<% end %>
 				</tbody>
 			</table>
-    </div>
+		</div>
+
+		<div class="col-md-2">
+			<strong>商品合計</strong><%= @total_price %>円<br>
+			<strong>送料</strong><%= @order.shipping_fee %>円<br>
+			<strong>請求金額合計<%= @total_price + @order.shipping_fee %>円</strong>
+		</div>
   </div>
 </div>
