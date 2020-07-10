@@ -63,7 +63,7 @@ class Customers::OrdersController < ApplicationController
 			order_item.order_id = order.id
 			order_item.count = cart_item.count
 			order_item.make_status = 0
-			order_item.price = cart_item.item.price
+			order_item.price = cart_item.item.price * 1.1
 		  	order_item.save
 	    end
 	    cart_items.destroy_all
