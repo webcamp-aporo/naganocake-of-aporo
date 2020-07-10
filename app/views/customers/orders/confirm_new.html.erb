@@ -1,44 +1,45 @@
 <div class="container">
+	<h3 style="margin-top:40px">注文情報確認</h3><br>
 	<div class="row">
-		<h3>注文情報確認</h3>
-		<table class="table table-bordered">
+		<table class="table table-bordered", style="margin-right:5%; width:70%">
 			<thead>
-				<tr>
-					<th>商品名</th>
-					<th>単価（税込）</th>
-					<th>数量</th>
-					<th>小計</th>
+				<tr class="thead-light">
+					<th style="width:30%">商品名</th>
+					<th style="width:15%">単価（税込）</th>
+					<th style="width:15%">数量</th>
+					<th style="width:15%;">小計</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
 					<tr>
-						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %><%= cart_item.item.name %></td>
-						<td><%= (cart_item.item.price * 1.1).to_i.to_s(:delimited)  %></td>
+						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart_item.item.name %></td>
+						<td><%= (cart_item.item.price * @Tax).to_i.to_s(:delimited)  %></td>
 						<td><%= cart_item.count %></td>
 						<td><%= ((cart_item.item.price * cart_item.count) * 1.1).to_i.to_s(:delimited) %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
-		<table class="table table-bordered">
+		<table class="table table-bordered w-25">
 			<tr class="thead-light">
-				<th>送料</th>
-				<td><%= 800.to_s(:delimited) %></td>
+				<th class="w-50">送料</th>
+				<td class="w-50"><%= @Fee.to_s(:delimited) %></td>
 			</tr>
 			<tr class="thead-light">
 				<th>商品合計</th>
-				<td><%= (@total_item_price * 1.1).to_i.to_s(:delimited) %></td>
+				<td><%= (@total_item_price * @Tax).to_i.to_s(:delimited) %></td>
 			</tr>
 			<tr class="thead-light">
 				<th>請求金額</th>
-				<td><%= session[:order]["payment"] %></td>
+				<td><%= session[:order]["payment"].to_i.to_s(:delimited) %></td>
 			</tr>
-
 		</table>
-
-		<p>支払い方法: <%= "#{session[:order]["payment_methods"]}" %></p></br>
-		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p></br>
-	    <%= link_to "確定する", finish_path , class: "btn btn-primary" %>
 	</div>
+
+		<p>支払い方法: <%= "#{session[:order]["payment_methods"]}" %></p><br>
+		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p><br>
+		<div class="text-center">
+	    <%= link_to "購入を確定する", finish_path , class: "btn btn-success" %>
+		</div>
 </div>
