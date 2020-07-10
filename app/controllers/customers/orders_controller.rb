@@ -17,6 +17,8 @@ class Customers::OrdersController < ApplicationController
 	def confirm_new
 		@cart_items = current_customer.cart_items
 		@total_item_price = @cart_items.sum{|c| c.item.price * c.count }
+		@Tax = 1.1
+		@Fee = 800
 	end
 
 	def create
@@ -62,7 +64,7 @@ class Customers::OrdersController < ApplicationController
 			order_item.count = cart_item.count
 			order_item.make_status = 0
 			order_item.price = cart_item.item.price
-		  order_item.save
+		  	order_item.save
 	    end
 	    cart_items.destroy_all
 	end
