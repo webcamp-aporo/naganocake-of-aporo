@@ -8,7 +8,7 @@
 
 	<main class="col-md-10" style="background-color: #f0f0f0">
 		<div class="row">
-			<h5>商品一覧(全<%= @items.count %>件)</h5>		<!-- countの記述が不安 -->
+			<h5 >商品一覧(全<%= @items.count %>件)</h5>		<!-- countの記述が不安 -->
 		</div>
 		<%= render 'customers/items/list', items: @items %>		<!-- 商品表示をパーシャル化　-->
 	</main>
