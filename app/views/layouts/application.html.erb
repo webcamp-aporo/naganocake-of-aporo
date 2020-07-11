@@ -29,7 +29,11 @@
         <% end %>
       </div>
     </header>
-
+      <% if flash[:alert] %>
+        <div class="alert alert-danger text-center">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
       <%= yield %>
 
   </body>
