@@ -1,6 +1,7 @@
 class Customers::ItemsController < ApplicationController
 	def index
-		@items = Item.where(is_active: true).order(name: "ASC")
+		Item.joins(:item_genre)
+		@items = Item.joins(:item_genre).where('items.is_active == ?', 1).where('item_genres.is_delete == ?', 0).order(name: "ASC")
 		@genres = ItemGenre.where(is_delete: false)
 	end
 
