@@ -5,7 +5,9 @@
   <div class="row">
     <div class="col-lg-12">
       <h3 class="title">管理者画面</h3>
-      本日の注文件数: <%= link_to @orders.count, admins_orders_path%> 件
+      <div style="font-size:24px">
+      本日の注文件数　　<%= link_to @orders.count, admins_orders_path%> 件
+      </div>
     </div>
   </div>
 </div>
