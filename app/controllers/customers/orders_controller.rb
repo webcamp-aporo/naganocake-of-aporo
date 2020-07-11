@@ -8,7 +8,7 @@ class Customers::OrdersController < ApplicationController
 	def show
 		@order = Order.find(params[:id])
 		@order_item = @order.order_items
-		@total_item_price = @order_item.sum{|c| c.price * 1.1 * c.count }
+		@total_item_price = @order_item.sum{|c| c.price * c.count }
 	end
 
 	def new
