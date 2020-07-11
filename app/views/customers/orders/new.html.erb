@@ -2,20 +2,21 @@
 <!-- 不明点 -->
 <!-- ラジオボタンの中にドロップダウンメニュー、新規登録フォームがある場合の記述 -->
 <!-- ラジオボタンの中に配送先の登録フォームがある -->
-<div class="container">
+<div class="container", style="margin-top:20px;">
 	<div class="row">
+	  <h3>注文情報入力</h3><br>
+    </div>
 
-	<h3>注文情報入力</h3><br>
-
+	<div class="row">
 		<%= form_with model: @order, local: true, url: confirm_new_order_path do |f| %>
-		<span>支払い方法</span><br>
-			<%= f.radio_button :payment_methods, 0 %>
+		<span><strong>支払い方法</strong></span><br>
+			<%= f.radio_button :payment_methods, 0 , checked: true %>
 			<%= f.label :payment_methods, "銀行振込", style: "display: inline-block"  %><br>
 			<%= f.radio_button :payment_methods, 1 %>
 			<%= f.label :payment_methods, "クレジットカード", style: "display: inline-block"  %><br>
 
-		<span>お届け方法</span><br>
-			<%= f.radio_button(:selected_address, "my address") %>
+		<span><strong>お届け方法</strong></span><br>
+			<%= f.radio_button(:selected_address, "my address", checked: true) %>
 			<%= f.label :selected_address, "ご自身の住所", style:"display:inline-block" %><br>
 			<%= current_customer.address %><br>
 

@@ -36,9 +36,24 @@
 			</tr>
 
 		</table>
-
-		<p>支払い方法: <%= "#{session[:order]["payment_methods"]}" %></p></br>
-		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p></br>
-	    <%= link_to "確定する", finish_path , class: "btn btn-primary" %>
+    </div>
+    <div class="row">
+    	<div class="col">
+		  <p><strong>支払い方法</strong></p>
+		</div>
+		<div class="col">
+		   <p><%= "#{session[:order]["payment_methods"]}" %></p>
+		</div>
+	</div>
+    <div class="row">
+    	<div class="col">
+		  <p><strong>お届け先</strong></p>
+	    </div>
+	    <div class="col">
+	      <p><%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p>
+	    </div>
+	</div>
+	<div class="mx-auto" style="width: 200px;">
+	  <%= link_to "確定する", finish_path , class: "btn btn-primary" %>
 	</div>
 </div>
