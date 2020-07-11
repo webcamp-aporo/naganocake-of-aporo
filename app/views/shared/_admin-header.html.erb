@@ -1,0 +1,20 @@
+        
+        <%= render 'shared/title' %>
+
+        <nav class="bar-right">
+          <ul style="margin:0; padding: 0">
+
+            <!----------※ログイン後（admin）---------->
+            <li><%= link_to '商品一覧', admins_items_path %></li>
+            <li><%= link_to '会員一覧', admins_customers_path %></li>
+            <li><%= link_to '注文履歴一覧', admins_orders_path %></li>
+            <li><%= link_to 'ジャンル一覧', admins_item_genres_path %></li>
+            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete  %></li><br>
+
+            <!---※検索フォーム--->
+            <form id="form2" action="" method="get">
+            <input id="sbox2"  id="s" name="s" type="text" placeholder="Search">
+            <button type="submit" id="sbtn2"><i class="fa fa-search"></i></button>
+            </form>
+          </ul>
+        </nav>

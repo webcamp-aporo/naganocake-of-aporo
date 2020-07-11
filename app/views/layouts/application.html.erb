@@ -17,74 +17,16 @@
     <header class="navbar navbar-fixed-top navbar-inverse" style="background:#E95464;">
       <div class="container-fluid">
 
-        <!-- ヘッダー左 -->
-        <nav class="bar-left">
-          <%= link_to 'NaganoCake', root_path %>
-        </nav>
-
-        <!-- ヘッダー右 -->
-        <!-- CTM:マイページ商品一覧カート新規登録ログインログアウト ADM: 商品一覧会員一覧注文履歴一覧ジャンル一覧ログインログアウト検索 -->
-
 <!--===================⭐︎customer⭐︎===================-->
         <% if customer_signed_in? %>
-
-        <!----------※ログイン後（customer）---------->
-
-          <!-- ヘッダー中 -->
-          <nav class="bar-center">
-            <p>ようこそ、<%=current_customer.last_name%><%=current_customer.first_name%>さん</p>
-          </nav>
-
-          <nav class="bar-right">
-            <ul style="margin:0; padding: 0">
-              <li><%= link_to 'マイページ', customer_path %></li>
-              <li><%= link_to '商品一覧', items_path %></li>
-              <li><%= link_to 'カート', cart_items_path %></li>
-              <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
-            </ul>
-          </nav>
-
-        <% else %>
-          <nav class="bar-right">
-            <ul style="margin:0; padding: 0">
-              <!----------※ログイン前（customer）---------->
-              <li><%= link_to 'About', about_path %></li>
-              <li><%=  link_to '商品一覧', items_path %></li>
-              <li><%= link_to '新規登録', new_customer_registration_path %></li>
-              <li><%= link_to 'ログイン', new_customer_session_path %></li>
-        <% end %>
-            </ul>
-          </nav>
-
-
-
-
+          <%= render 'shared/customer-header' %>
 <!--===================⭐︎admin⭐︎===================-->
-        <nav class="bar-right">
-          <ul style="margin:0; padding: 0">
-          <% if admin_signed_in? %>
-
-            <!----------※ログイン後（admin）---------->
-            <li><%= link_to '商品一覧', admins_items_path %></li>
-            <li><%= link_to '会員一覧', admins_customers_path %></li>
-            <li><%= link_to '注文履歴一覧', admins_orders_path %></li>
-            <li><%= link_to 'ジャンル一覧', admins_item_genres_path %></li>
-            <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete  %></li><br>
-
-            <!---※検索フォーム--->
-            <form id="form2" action="" method="get">
-            <input id="sbox2"  id="s" name="s" type="text" placeholder="Search">
-            <button type="submit" id="sbtn2"><i class="fa fa-search"></i></button>
-            </form>
-
-          <% else %>
-          <!----------※ログイン前（admin）---------->
-            <li><%=  link_to '商品一覧', admins_items_path %></li>
-            <li><%= link_to '新規登録', new_admin_registration_path %></li>
-            <li><%= link_to 'ログイン', admin_session_path %></li>
-          <% end %>
-          </ul>
-        </nav>
+        <% elsif admin_signed_in? %>
+          <%= render 'shared/admin-header' %>
+          <!-- loginしていない時 -->
+        <% else %>
+          <%= render 'shared/nologin-header' %>
+        <% end %>
       </div>
     </header>
 
