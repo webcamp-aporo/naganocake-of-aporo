@@ -73,10 +73,10 @@
 							<tbody>
 								<% @order.order_items.each do |order|%>
 								<tr>
-									<td><%= order.item.name %></td>
-									<td><%= (order.price * 1.1).to_i.to_s(:delimited) %></td>
-									<td><%= order.count %></td>
-									<td><%= (order.price * 1.1 * order.count).to_i.to_s(:delimited) %></td>
+                  <td><%= order.item.name %></td>
+                  <td><%= (order.price).to_i.to_s(:delimited) %></td>
+                  <td><%= order.count %></td>
+                  <td><%= (order.price * order.count).to_i.to_s(:delimited) %></td>
 								</tr>
 								<% end %>
 							</tbody>
@@ -88,4 +88,3 @@
 		</div>
 	</div>		<!-- rowの閉じタグ -->
 </div>		<!-- containerの閉じタグ -->
->>>>>>> develop
