@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
   root 'customers/homes#top'
-  # get 'orders/new', to: 'customers/orders#new'
-  # get 'orders/new/confirm', to: 'customers/orders#confirm_new'
-  # post 'orders/new/confirm', to: 'customers/orders#create'
-  # get 'orders/finish', to: 'customers/orders#finish'
+  get 'about', to: 'customers/homes#about'
 
   devise_for :customers
   devise_for :admins, controllers: {
@@ -18,8 +15,6 @@ Rails.application.routes.draw do
     get 'exit' => 'customers#exit'
     resources :items
     resources :orders, only: [:index, :new, :show] do
-      # 下の二行はURL'orders/new/confirm'でGETとPOSTリクエストを作ってます
-      # POSTの方は動作確認なし。POSTは普通に'/orders'でcreateアクション意送ってもいいかも
       get :confirm, action: :confirm_new, on: :new
       post :confirm, action: :create, on: :new
     end
