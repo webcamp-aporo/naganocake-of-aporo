@@ -4,19 +4,19 @@
 		<table class="table table-bordered", style="margin-right:5%; width:70%">
 			<thead>
 				<tr class="thead-light">
-					<th style="width:30%">商品名</th>
-					<th style="width:15%">単価（税込）</th>
-					<th style="width:15%">数量</th>
-					<th style="width:15%;">小計</th>
+					<th style="width:37%">商品名</th>
+					<th style="width:11%">単価（税込）</th>
+					<th style="width:11%">数量</th>
+					<th style="width:11%;">小計</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
 					<tr>
-						<td><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart_item.item.name %></td>
-						<td><%= (cart_item.item.price * @Tax).to_i.to_s(:delimited)  %></td>
-						<td><%= cart_item.count %></td>
-						<td><%= ((cart_item.item.price * cart_item.count) * 1.1).to_i.to_s(:delimited) %></td>
+						<td style="vertical-align: middle;"><%= attachment_image_tag cart_item.item, :image, format: 'jpeg', size: "100x80", fallback: "no_image.jpg" %>　<%= cart_item.item.name %></td>
+						<td style="vertical-align: middle;"><%= (cart_item.item.price * @Tax).to_i.to_s(:delimited)  %></td>
+						<td style="vertical-align: middle;"><%= cart_item.count %></td>
+						<td style="vertical-align: middle;"><%= ((cart_item.item.price * cart_item.count) * 1.1).to_i.to_s(:delimited) %></td>
 					</tr>
 				<% end %>
 			</tbody>

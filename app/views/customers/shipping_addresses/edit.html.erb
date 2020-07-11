@@ -1,32 +1,31 @@
-<div class="container" style="margin-top:20px;">
+<div class="container">
   <div class="row">
-    <!-- エラーメッセージ表示-->
-    <% if @shipping_address.errors.any? %>
-	  <h3><%= @shipping_address.errors.count %>error occurrence</h3><!--エラーメッセ-->
-	  <ul>
-  		<% @shipping_address.errors.full_messages.each do |message| %>
-	  	<li><%= message %></li>
-		  <% end %>
-	  </ul>
-    <% end %>
-    <!-- エラーメッセージ表示-->
-  </div>
-  <div class="row">
-    <h2>配送先編集</h2>
-  </div>
-  <div class="row">
-    <%= form_for (@shipping_address) do |f| %>
-    <%= f.label :郵便番号%>
-    <%= f.text_field :postal_number %></br>
+    <div class="col-lg-12">
+      <!-- エラーメッセージ表示-->
+      <% if @shipping_address.errors.any? %>
+        <h3><%= @shipping_address.errors.count %>error occurrence</h3><!--エラーメッセ-->
+        <ul>
+          <% @shipping_address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <!-- エラーメッセージ表示-->
+      <h2 class="title">配送先編集</h2>
+<div class="row">
+      <%= form_for (@shipping_address) do |f| %>
+      <%= f.label :郵便番号%>
+      <%= f.text_field :postal_number %></br>
 
-    <%= f.label :住所%>
-    <%= f.text_field :address %></br>
+      <%= f.label :住所%>
+      <%= f.text_field :address %></br>
 
-    <%= f.label :宛名%>
-    <%= f.text_field :name %></br>
+      <%= f.label :宛名%>
+      <%= f.text_field :name %></br>
 
-    <%= f.submit "編集する", class: "btn btn-primary" %>
+      <%= f.submit "編集する", class: "btn btn-primary" %>
 
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+	</div>
 </div>
