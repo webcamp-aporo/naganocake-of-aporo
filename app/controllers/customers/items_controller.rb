@@ -6,8 +6,10 @@ class Customers::ItemsController < ApplicationController
 
 	def show
 		@item = Item.find(params[:id])
-	    @genres = ItemGenre.where(is_delete: false)
-		@cart_item = current_customer.cart_items.build
+		@genres = ItemGenre.where(is_delete: false)
+		if customer_signed_in?
+			@cart_item = current_customer.cart_items.build
+		end
 	end
 
 	def genres										#最終的にはAjax化したい…
