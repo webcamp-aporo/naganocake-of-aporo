@@ -7,9 +7,11 @@ class Customers::ItemsController < ApplicationController
 	def show
 		@item = Item.find(params[:id])
 		@genres = ItemGenre.where(is_delete: false)
-		if customer_signed_in?
-			@cart_item = current_customer.cart_items.build
-		end
+		unless  customer_signed_in?
+      @cart_item = CartItem.new
+    else
+      @cart_item = current_customer.cart_items.new
+    end
 	end
 
 	def genres										#最終的にはAjax化したい…
@@ -21,5 +23,5 @@ class Customers::ItemsController < ApplicationController
   private
     def item_params
       params.require(:item).permit(:image, :name, :description, :item_genre_id, :price, :is_active)
-    end
+		end
 end
