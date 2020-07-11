@@ -1,6 +1,6 @@
 class Customers::ItemsController < ApplicationController
 	def index
-		@items = Item.where(is_active: true)
+		@items = Item.where(is_active: true).order(name: "ASC")
 		@genres = ItemGenre.where(is_delete: false)
 	end
 
@@ -11,7 +11,7 @@ class Customers::ItemsController < ApplicationController
 	end
 
 	def genres										#最終的にはAjax化したい…
-		@items = Item.where(item_genre_id: params[:genres_id])
+		@items = Item.where(item_genre_id: params[:genres_id]).order(name: "ASC")
 	    @genre = ItemGenre.find(params[:genres_id])
 		@genres = ItemGenre.where(is_delete: false)
 	end
