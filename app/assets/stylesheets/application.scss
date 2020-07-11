@@ -52,36 +52,39 @@ body{
 // paginate
 .pagination{
   margin: auto;
-  width: 50%;
+  width: 30%;
   display: flex;
   justify-content: flex-start;
 }
 .pagination span{
   text-align: center;
-  width: 50px;
-  border: solid 1px #EA5363;
-  transition: .3s;
-  -webkit-transform: scale(1);
-  transform: scale(1);
 }
-.pagination span:hover{
-  transition: .3s;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
 }
-.pagination span a:hover{
-  transition: .3s;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #EA5363;     /*背景の色を変える*/
+  border-radius: 50px;     /*角を丸くする*/
 }
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 50px;    /*角を丸くする*/
+}
+
 
 .main-visual {
   width: 100%;
   height: 300px;
   background-color: green;
-  background-image: url(image1.jpeg);
+  background-image: url(3567599.jpg);
   background-size: cover;
-  background-position: left center;
+  background-position: left top;
 
   display: flex;                /* 位置を中央寄せにしています */
   justify-content: center;
@@ -112,3 +115,57 @@ body{
   margin: 0 auto;
   background-color: #fff;
   }*/
+
+
+
+  // 検索フォーム
+  #form2{
+    position: relative;
+    margin-left: 240px;
+    max-width: 300px;	
+    margin-bottom: 40px;
+    padding-top: 0px;
+    margin-top: 5px;
+    }
+
+  #sbox2{
+    height: 30px;
+    padding: 0 10px; 
+    position: absolute; 
+    left: 0;
+    top: 0; 
+    border-radius: 1px;
+    outline: 0;
+    background: white;	
+    border: none;
+  }
+
+  #sbtn2{
+    height: 30px;
+    position: absolute; 
+    left: 150px;/*アイコン左右の位置調整*/
+    top: 0;
+    background: none;
+    color: #666;
+    border: none;
+    font-size: 20px;/*アイコンサイズ*/
+  }
+
+
+  .title{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 28px;
+  }
+
+  .login{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .mypg{
+    margin-left: 12px;
+    width: 100px;
+    float: left;
+  }

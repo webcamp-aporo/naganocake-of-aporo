@@ -1,10 +1,14 @@
 class Customers::OrdersController < ApplicationController
+	before_action :authenticate_customer!
+
 	def index
-		
+		@orders = Order.where(customer_id: current_customer.id).order(id: "DESC")
 	end
 
 	def show
-		
+		@order = Order.find(params[:id])
+		@order_item = @order.order_items
+		@total_item_price = @order_item.sum{|c| c.price * c.count }
 	end
 
 	def new
@@ -15,6 +19,8 @@ class Customers::OrdersController < ApplicationController
 	def confirm_new
 		@cart_items = current_customer.cart_items
 		@total_item_price = @cart_items.sum{|c| c.item.price * c.count }
+		@Tax = 1.1
+		@Fee = 800
 	end
 
 	def create
@@ -23,17 +29,17 @@ class Customers::OrdersController < ApplicationController
 		
 		if params[:order][:selected_address] == "my address"
 			session[:order][:postal_number] = current_customer.postal_number
-            		session[:order][:address] = current_customer.address
-		    	session[:order][:name] = current_customer.last_name + current_customer.first_name
+			session[:order][:address] = current_customer.address
+			session[:order][:name] = current_customer.last_name + current_customer.first_name
 		elsif params[:order][:selected_address] == "shipping_address"
-     			addresses = ShippingAddress.find(params[:order][:shipping])
+			addresses = ShippingAddress.find(params[:order][:shipping])
 			session[:order][:postal_number] = addresses.postal_number
-            		session[:order][:address] = addresses.address
+			session[:order][:address] = addresses.address
 			session[:order][:name] = addresses.name
 		elsif params[:order][:selected_address] == "new address"
 			session[:order][:postal_number] = params[:order][:postal_number]
-            		session[:order][:address] = params[:order][:address]
-		        session[:order][:name] = params[:order][:name]
+			session[:order][:address] = params[:order][:address]
+			session[:order][:name] = params[:order][:name]
 		end
 		
 		session[:order][:order_status] = 0
@@ -59,11 +65,15 @@ class Customers::OrdersController < ApplicationController
 			order_item.order_id = order.id
 			order_item.count = cart_item.count
 			order_item.make_status = 0
-			order_item.price = cart_item.item.price
-		  order_item.save
+			order_item.price = cart_item.item.price * 1.1
+		  	order_item.save
 	    end
 	    cart_items.destroy_all
 	end
 
+  private
+    def orders
+      params.require(:order).permit(:customer_id, :shipping_fee, :payment, :payment_methods, :postal_number, :address, :name, :order_status)
+    end
 
 end

@@ -1,8 +1,10 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
     # カートの合計金額
     @total_price = @cart_items.sum{|c| c.item.price * c.count }
+    @Tax = 1.1
   end
 
   def create

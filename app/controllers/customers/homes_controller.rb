@@ -1,6 +1,9 @@
 class Customers::HomesController < ApplicationController
   def top
-  	@genres = ItemGenre.all
+	@genres = ItemGenre.where(is_delete: false)
   	@items = Item.page(params[:page]).per(4)
+  end
+
+  def about
   end
 end

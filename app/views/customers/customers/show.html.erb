@@ -1,7 +1,9 @@
-<div class="container" style="margin-top:20px;">
+<div class="container">
   <div class="row">
-    <h3> マイページ </h3>
-  </div>
+    <div class="col-lg-12">
+			<h2 class="title">マイページ</h2>
+  	</div>
+	</div>
   <div class="row">
     <table>
       <tr>
@@ -55,7 +57,7 @@
  	    </tr>
  	    <tr>
      	  <th>注文履歴</th>
- 	      <td><%= link_to '一覧を見る', "#", class: "btn btn-primary" %></td>
+        <td><%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %></td>
  	    </tr>
     </table>
   </div>

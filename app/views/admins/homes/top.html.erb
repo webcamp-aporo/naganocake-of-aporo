@@ -1,6 +1,11 @@
 <!-- 修正予定 -->
 <!-- order機能がまだなので件数の呼び出しはできません。 -->
 
-<h1>管理者画面</h1>
-本日の注文件数: 0 件
-<!-- 本日の注文件数: <%#= link_to @orders.count, orders_path%> 件 -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h3 class="title">管理者画面</h3>
+      本日の注文件数: <%= link_to @orders.count, admins_orders_path%> 件
+    </div>
+  </div>
+</div>
