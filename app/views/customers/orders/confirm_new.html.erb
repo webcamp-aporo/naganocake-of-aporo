@@ -62,5 +62,6 @@
 		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p><br>
 		<div class="text-center">
 	    <%= link_to "購入を確定する", finish_path , class: "btn btn-success" %>
+		<%= link_to "戻る", :back , class: "btn btn-warning" %>
 		</div>
 </div>
