@@ -1,9 +1,13 @@
 <% if admin_signed_in? %>
 	<nav class="bar-left">
-	   <%= link_to 'NaganoCake', admins_root_path %>
-	</nav>
+          <%= link_to admins_root_path do%>
+          <%= image_tag 'naganocake2.png', :size => '200x40' %>
+          <% end %>
+        </nav>
 <% else %>
 	<nav class="bar-left">
-	   <%= link_to 'NaganoCake', root_path %>
-	</nav>
+          <%= link_to root_path do%>
+          <%= image_tag 'naganocake2.png', :size => '200x40' %>
+          <% end %>
+        </nav>
 <% end %>
