@@ -1,91 +1,90 @@
-<div class="container" style="margin-top:20px;">
-<div class="row">
-
-	<main class="col-lg-12" style="background-color: #fffafa">
-		<div class="row">
-			<h5>注文履歴詳細</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+			<main style="background-color: #fffafa">
+				<div class="row">
+					<h5 class="title">注文履歴詳細</h5>
+				</div>
+				<div class="row">
+					<div class="col-lg-5">
+						注文情報
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td>注文日</td>
+									<td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
+								</tr>
+								<tr>
+									<td>配送先</td>
+									<td>
+										<p><%=@order.postal_number %></p>
+										<p><%= @order.address %></p>
+										<p><%= @order.name %></p>
+									</td>
+								</tr>
+								<tr>
+									<td>支払方法</td>
+									<td><%= @order.payment_methods %></td>
+								</tr>
+								<tr>
+									<td>ステータス</td>
+									<td><%= @order.order_status %></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-lg-2">
+					</div>
+					<div class="col-lg-5">
+						請求情報
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td>商品合計</td>
+									<td>
+										<!-- もっとうまいやり方があれば… -->
+											<%= @total_item_price.to_i.to_s(:delimited) %>
+									</td>
+								</tr>
+								<tr>
+									<td>配送料</td>
+									<td><%= @order.shipping_fee %></td>
+								</tr>
+								<tr>
+									<td>ご請求額</td>
+									<td><%=  @order.payment %></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-5">
+						注文内容
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>商品</th>
+									<th>単価（税込）</th>
+									<th>個数</th>
+									<th>小計</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @order.order_items.each do |order|%>
+								<tr>
+                  <td><%= order.item.name %></td>
+                  <td><%= (order.price).to_i.to_s(:delimited) %></td>
+                  <td><%= order.count %></td>
+                  <td><%= (order.price * order.count).to_i.to_s(:delimited) %></td>
+								</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+			</main>
 		</div>
-
-		<div class="row">
-			<div class="col-lg-5">
-				注文情報
-				<table class="table table-bordered">
-					<tbody>
-						<tr>
-							<td>注文日</td>
-							<td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
-						</tr>
-						<tr>
-							<td>配送先</td>
-							<td>
-								<p><%=@order.postal_number %></p>
-								<p><%= @order.address %></p>
-								<p><%= @order.name %></p>
-							</td>
-						</tr>
-						<tr>
-							<td>支払方法</td>
-							<td><%= @order.payment_methods %></td>
-						</tr>
-						<tr>
-							<td>ステータス</td>
-							<td><%= @order.order_status %></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-lg-2">
-			</div>
-			<div class="col-lg-5">
-				請求情報
-				<table class="table table-bordered">
-					<tbody>
-						<tr>
-							<td>商品合計</td>
-							<td>
-								<!-- もっとうまいやり方があれば… -->
-									<%= @total_item_price.to_i.to_s(:delimited) %>
-							</td>
-						</tr>
-						<tr>
-							<td>配送料</td>
-							<td><%= @order.shipping_fee %></td>
-						</tr>
-						<tr>
-							<td>ご請求額</td>
-							<td><%=  @order.payment %></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-5">
-				注文内容
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>商品</th>
-							<th>単価（税込）</th>
-							<th>個数</th>
-							<th>小計</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @order.order_items.each do |order|%>
-						<tr>
-							<td><%= order.item.name %></td>
-							<td><%= (order.price).to_i.to_s(:delimited) %></td>
-							<td><%= order.count %></td>
-							<td><%= (order.price * order.count).to_i.to_s(:delimited) %></td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		
-	</main>
-
-</div>		<!-- rowの閉じタグ -->
+	</div>		<!-- rowの閉じタグ -->
 </div>		<!-- containerの閉じタグ -->
