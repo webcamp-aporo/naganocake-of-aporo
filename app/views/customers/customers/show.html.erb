@@ -5,15 +5,13 @@
   	</div>
 	</div>
   <div class="row">
-    <table>
-      <tr>
-        <th>登録情報</th>
-        <td>
-      	  <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
-        </td>
-        <td><%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary" %></td>
-      </tr>
-    </table>
+    <div class="col">
+      <p><strong>登録情報</strong></p>
+    </div>
+    <div class="col">
+      <%= link_to "編集する", edit_customer_path, class: "btn btn-primary" %>
+      <%= link_to 'パスワードを変更する', edit_customer_registration_path, class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="row">
     <table class="table table-bordered">
@@ -49,16 +47,22 @@
       </tr>
     </table>
   </div>
+
   <div class="row">
-    <table>
-     	<tr>
- 	      <th>発送先</th>
- 	      <td><%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary" %></td>
- 	    </tr>
- 	    <tr>
-     	  <th>注文履歴</th>
-        <td><%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %></td>
- 	    </tr>
-    </table>
+    <div class="col">
+ 	    <p><strong>発送先</strong></p>
+    </div>
+    <div class="col">
+ 	    <%= link_to "一覧を見る", shipping_addresses_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <p><strong>注文履歴</strong></p>
+    </div>
+    <div class="col">
+      <%= link_to '一覧を見る', orders_path, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>

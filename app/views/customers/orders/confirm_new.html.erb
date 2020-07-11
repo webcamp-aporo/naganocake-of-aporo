@@ -56,11 +56,4 @@
 	<div class="mx-auto" style="width: 200px;">
 	  <%= link_to "確定する", finish_path , class: "btn btn-primary" %>
 
-	</div>
-
-		<p>支払い方法: <%= "#{session[:order]["payment_methods"]}" %></p><br>
-		<p>お届け先: <%= "#{session[:order]["postal_number"]} #{session[:order]["address"]} #{session[:order]["name"]}" %></p><br>
-		<div class="text-center">
-	    <%= link_to "購入を確定する", finish_path , class: "btn btn-success" %>
-		</div>
 </div>
