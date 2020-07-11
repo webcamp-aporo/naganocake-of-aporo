@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
 
   #サインイン後、どこの画面に遷移するのかを設定する必要がある。
   #上記と同じく、サインアウト後のridirect先を設定する必要がある。
+  def after_sign_in_path_for(resource)
+    case resource
+    when Customer
+      root_path
+    when Admin
+      admins_root_path
+    end
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_number, :address, :phone_number])
