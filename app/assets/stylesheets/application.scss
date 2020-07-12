@@ -79,12 +79,12 @@ body{
 
 
 .main-visual {
-  width: 100%;
+  width: 96.5%;
   height: 300px;
-  background-color: green;
   background-image: url(3567599.jpg);
   background-size: cover;
   background-position: left top;
+  margin: 0 auto;
 
   display: flex;                /* 位置を中央寄せにしています */
   justify-content: center;
