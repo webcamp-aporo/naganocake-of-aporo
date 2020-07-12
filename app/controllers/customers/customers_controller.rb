@@ -1,6 +1,6 @@
 class Customers::CustomersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def show
     @customer = current_customer
   end
@@ -26,6 +26,10 @@ class Customers::CustomersController < ApplicationController
     @customer = current_customer
     @customer.destroy
     redirect_to root_path, notice: "退会しました"
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
   end
 
   private
