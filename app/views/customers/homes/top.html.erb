@@ -1,14 +1,17 @@
 <div class="container" style="margin-top:20px;">
 <div class="row">
 
-	<div class="col-md-2" style="background-color: #f0f8ff;">
+	<div class="col-md-2" style="background-color: #f0f0f0;">
 		<%= render 'customers/items/genres', genres: @genres %>		<!-- ジャンル表示をパーシャル化　-->
 	</div>
 
 
 	<main class="col-md-10">
-		<!-- このmain-visualにassets/imagesの中のimages1.jpgを入れたい -->
+		<div class="row">
 		<div class="main-visual">
+			<div class="main-visual-image">
+				
+			</div>
 			<div class="main-visual-text" >
 				<p>ようこそ、NaganoCakeへ！</p>
 				<p>このサイトは、ケーキ販売のECサイトになります。</p>
@@ -16,32 +19,26 @@
 				<p>購入には会員登録が必要になります。</p>
 			</div>
 		</div>
-
-<!-- もっと見るをAjaxにしたかった、、、 -->
-		<h4>オススメ商品</h4>
-		<div class="flex">
-				<% @items.each do |item| %>
-					<div>
-						<table>
-							<tr>
-								<td>
-									<%= link_to item_path(item) do %>
-									<%= attachment_image_tag item, :image, size: "200x200", fallback: "no_image.jpg"  %>
-									<% end %>
-								</td>
-							</tr>
-							<tr>
-								<td><%= item.name %></td>
-							</tr>
-							<tr>
-								<td>¥<%= (item.price * 1.1).to_i.to_s(:delimited) %></td>
-							</tr>
-						</table>
-					</div>
-				<% end %>
 		</div>
-			<%= link_to "もっと見る>", items_path %>
+<!-- もっと見るをAjaxにしたかった、、、 -->
 
+		<h4 style="margin-top: 20px">オススメ商品</h4>
+		<div class="row">
+			<% @items.each do |item| %>
+				<div class="col-md-3">
+					<%= link_to item_path(item) do %>
+						<%= attachment_image_tag item, :image, width: "100%", height: "150px", style: "object-fit: cover;", fallback: "no_image.jpg" %>
+					<% end %>
+					<ul style="list-style: none; margin:10px 0; padding: 0;">
+						<li><%= item.name %></li>
+						<li>¥<%= (item.price * 1.1).to_i.to_s(:delimited) %></li>
+					</ul>
+				</div>
+			<% end %>
+		</div>
+		<%= link_to items_path do %>
+			<p style="text-align: right;">もっと見る></p>
+		<% end %>
 	</main>
 </div>
 </div>
