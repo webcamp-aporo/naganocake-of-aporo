@@ -8,7 +8,7 @@ class Customers::ShippingAddressesController < ApplicationController
   end
 
   def create
-  	@shipping_address = ShippingAddress.new(shipping_address_params)
+  	@shipping_address = current_customer.shipping_addresses.new(shipping_address_params)
     @shipping_address.customer_id = current_customer.id
   	if @shipping_address.save
   	  redirect_to shipping_addresses_path, notice: '新しい配送先を登録しました'
