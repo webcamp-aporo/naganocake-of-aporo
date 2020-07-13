@@ -3,8 +3,8 @@ class Customers::ShippingAddressesController < ApplicationController
 
   def index
     @customer = current_customer
-  	@shipping_address = ShippingAddress.new
-    @shipping_addresses = ShippingAddress.all
+  	@shipping_address = current_customer.shipping_addresses.new
+    @shipping_addresses = current_customer.shipping_addresses.all
   end
 
   def create
