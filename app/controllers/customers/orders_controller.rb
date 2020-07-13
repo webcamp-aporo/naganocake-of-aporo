@@ -11,10 +11,13 @@ class Customers::OrdersController < ApplicationController
 		@total_item_price = @order_item.sum{|c| c.price * c.count }
 	end
 
+
+
 	def new
 		@order = current_customer.orders.new
 		@addresses = ShippingAddress.where(customer_id: current_customer)
 	end
+
 
 	def confirm_new
 		@cart_items = current_customer.cart_items
@@ -25,6 +28,9 @@ class Customers::OrdersController < ApplicationController
 
 	def create
 		session[:order] = Order.new
+		# 新たにShippingAdressを定義 #
+		session[:shipping_address] = ShippingAddress.new
+
 		session[:order][:payment_methods] = params[:order][:payment_methods].to_i
 		
 		if params[:order][:selected_address] == "my address"
@@ -40,6 +46,12 @@ class Customers::OrdersController < ApplicationController
 			session[:order][:postal_number] = params[:order][:postal_number]
 			session[:order][:address] = params[:order][:address]
 			session[:order][:name] = params[:order][:name]
+
+			session[:shipping_address][:postal_number] = params[:order][:postal_number]
+			session[:shipping_address][:address] = params[:order][:address]
+			session[:shipping_address][:name] = params[:order][:name]
+
+			session[:selected_address] = "new address"
 		end
 		
 		session[:order][:order_status] = 0
@@ -55,9 +67,18 @@ class Customers::OrdersController < ApplicationController
 		redirect_to confirm_new_order_path
 	end
 
+
 	def finish
 		order = Order.new(session[:order])
 		order.save
+
+	    # 条件発生のフラグをどうやって設定する？ #
+	    if session[:selected_address]
+			shipping = ShippingAddress.new(session[:shipping_address])
+			shipping.customer_id = current_customer.id
+			shipping.save
+	    end
+
 		cart_items = current_customer.cart_items
 		cart_items.each do |cart_item|
 			order_item = OrderItem.new
@@ -68,6 +89,7 @@ class Customers::OrdersController < ApplicationController
 			order_item.price = cart_item.item.price * 1.1
 		  	order_item.save
 	    end
+
 	    cart_items.destroy_all
 	end
 
