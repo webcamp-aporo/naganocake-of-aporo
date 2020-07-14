@@ -11,11 +11,11 @@
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<td>注文日</td>
+									<th class="table-active" style="width:30%">注文日</th>
 									<td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
 								</tr>
 								<tr>
-									<td>配送先</td>
+									<th class="table-active">配送先</th>
 									<td>
 										<p><%=@order.postal_number %></p>
 										<p><%= @order.address %></p>
@@ -23,11 +23,11 @@
 									</td>
 								</tr>
 								<tr>
-									<td>支払方法</td>
+									<th class="table-active">支払方法</th>
 									<td><%= @order.payment_methods %></td>
 								</tr>
 								<tr>
-									<td>ステータス</td>
+									<th class="table-active">ステータス</th>
 									<td><%= @order.order_status %></td>
 								</tr>
 							</tbody>
@@ -40,18 +40,18 @@
 						<table class="table table-bordered">
 							<tbody>
 								<tr>
-									<td>商品合計</td>
+									<th class="table-active" style="width:30%">商品合計</th>
 									<td>
 										<!-- もっとうまいやり方があれば… -->
 											<%= @total_item_price.to_i.to_s(:delimited) %>
 									</td>
 								</tr>
 								<tr>
-									<td>配送料</td>
+									<th class="table-active">配送料</th>
 									<td><%= @order.shipping_fee %></td>
 								</tr>
 								<tr>
-									<td>ご請求額</td>
+									<th class="table-active">ご請求額</th>
 									<td><%=  @order.payment %></td>
 								</tr>
 							</tbody>
@@ -64,10 +64,10 @@
 						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>商品</th>
-									<th>単価（税込）</th>
-									<th>個数</th>
-									<th>小計</th>
+									<th class="table-active">商品</th>
+									<th class="table-active">単価（税込）</th>
+									<th class="table-active">個数</th>
+									<th class="table-active">小計</th>
 								</tr>
 							</thead>
 							<tbody>

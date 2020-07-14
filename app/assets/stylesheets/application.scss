@@ -23,6 +23,10 @@ body{
   opacity: 0.6;
 }
 
+.over-text:hover{
+  color: #E95464;
+}
+
 .bar {
 }
 
@@ -173,3 +177,19 @@ body{
     width: 100px;
     float: left;
   }
+
+  .genre-form{
+    background-color: #f7f7f7;
+    padding-top: 10px;
+    height: 600px;
+  }
+
+  .genre-form a{
+    color: #000000;
+  }
+
+  .genre-form a:hover{
+    color: #E95464;
+    text-decoration: none;
+  }
+
