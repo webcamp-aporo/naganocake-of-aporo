@@ -8,7 +8,7 @@
 			<% end %>
 
 			<ul style="list-style: none; margin:10px 0; padding: 0;">
-				<li><%= link_to(item.name, item_path(item.id)) %></li>
+				<li><%= item.name %></li>
 				<li>¥<%= (item.price * 1.1).to_i.to_s(:delimited) %></li>
 			</ul>
 		</div>

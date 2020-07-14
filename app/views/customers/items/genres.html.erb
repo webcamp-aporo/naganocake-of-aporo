@@ -1,15 +1,13 @@
-<!-- 可能ならURLを新規発行するのではなく、Ajaxで処理したい -->
-
 <div class="container" style="margin-top:20px;">
 <div class="row">
 
-	<nav class="col-md-2" style="background-color: #f0f0f0;">
+	<nav class="col-md-2 genre-form">
 		<%= render 'customers/items/genres', genres: @genres %>		<!-- ジャンル表示をパーシャル化　-->
 	</nav>
 
 
 	<main class="col-md-10">
-		<div class="row">
+		<div class="row" style="margin-bottom: 15px;">
 			<h5 style="margin-left: 15px;"><%= @genre.name %>一覧(全<%= @items.count %>件)</h5>
 		</div>
 		<%= render 'customers/items/list', items: @items %>		<!-- 商品表示をパーシャル化　-->
